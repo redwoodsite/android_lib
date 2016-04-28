@@ -1,0 +1,7 @@
+include ':OkHttpTest'
+include ':Android_Lib'
+project(':Android_Lib').projectDir = new File('D:\\android_lib\\android_lib')
+
+
+//include ':xUtils3-master'
+//project(':xUtils3-master').projectDir = new File('D:\\android_lib\\xUtils3-master\\xutils')

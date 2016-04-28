@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<url>
+
+	<!--BaseWebapi-->
+	<Node Key="base" Url="http://123.57.24.26/sjwwebapi/">
+		<Node
+			Key = "card/query"
+			netType="get"
+			Url="card/query" />
+		<Node
+			Key = "card/save"
+			netType="get"
+			Url="card/save" />
+		<Node
+			Key = "cy_tjc/query"
+			netType="get"
+			Url="cy_tjc/query" />
+		<Node
+			Key = "cy_tjc/reg"
+			netType="get"
+			Url="cy_tjc/reg" />
+		<Node
+			Key = "cy_tjc/delete"
+			netType="get"
+			Url="cy_tjc/delete" />
+		<Node
+			Key = "cy_wscc/query"
+			netType="get"
+			Url="cy_wscc/query" />
+		<Node
+			Key = "cy_wscc/save"
+			netType="get"
+			Url="cy_wscc/save" />
+		<Node
+			Key = "hy/save"
+			netType="get"
+			Url="hy/save" />
+		<Node
+			Key = "hy/pull"
+			netType="get"
+			Url="hy/pull" />
+		<Node
+			Key = "hy/hyzf"
+			netType="get"
+			Url="hy/hyzf" />
+		<Node
+			Key = "hy_all/query"
+			netType="get"
+			Url="hy_all/query" />
+		<Node
+			Key = "hy_zx/query"
+			netType="get"
+			Url="hy_zx/query" />
+		<Node
+			Key = "hz/query"
+			netType="get"
+			Url="hz/query" />
+		<Node
+			Key = "hz/login"
+			netType="get"
+			Url="hz/login" />
+		<Node
+			Key = "hz/usercredit"
+			netType="get"
+			Url="hz/usercredit" />
+		<Node
+			Key = "hz/save"
+			netType="get"
+			Url="hz/save" />
+		<Node
+			Key = "hz/newpassword"
+			netType="get"
+			Url="hz/newpassword" />
+		<Node
+			Key = "hz/reg"
+			netType="get"
+			Url="hz/reg" />
+		<Node
+			Key = "hz/delete"
+			netType="get"
+			Url="hz/delete" />
+		<Node
+			Key = "hz/resetpassword"
+			netType="get"
+			Url="hz/resetpassword" />
+		<Node
+			Key = "hz_rz/query"
+			netType="get"
+			Url="hz_rz/query" />
+		<Node
+			Key = "hz_rz/rz"
+			netType="get"
+			Url="hz_rz/rz" />
+		<Node
+			Key = "hz_yjfk/query"
+			netType="get"
+			Url="hz_yjfk/query" />
+		<Node
+			Key = "hz_yjfk/save"
+			netType="get"
+			Url="hz_yjfk/save" />
+		<Node
+			Key = "jpush_msg/query"
+			netType="get"
+			Url="jpush_msg/query" />
+		<Node
+			Key = "jpush_msg/jpushimp"
+			netType="get"
+			Url="jpush_msg/jpushimp" />
+		<Node
+			Key = "jpush_msg/delete"
+			netType="get"
+			Url="jpush_msg/delete" />
+		<Node
+			Key = "jpush_msg/ck"
+			netType="get"
+			Url="jpush_msg/ck" />
+		<Node
+			Key = "jpush_msg/exist"
+			netType="get"
+			Url="jpush_msg/exist" />
+		<Node
+			Key = "reapal/query"
+			netType="get"
+			Url="reapal/query" />
+		<Node
+			Key = "sj/query"
+			netType="get"
+			Url="sj/query" />
+		<Node
+			Key = "sj/login"
+			netType="get"
+			Url="sj/login" />
+		<Node
+			Key = "sj/usercredit"
+			netType="get"
+			Url="sj/usercredit" />
+		<Node
+			Key = "sj/save"
+			netType="get"
+			Url="sj/save" />
+		<Node
+			Key = "sj/newpassword"
+			netType="get"
+			Url="sj/newpassword" />
+		<Node
+			Key = "sj/reg"
+			netType="get"
+			Url="sj/reg" />
+		<Node
+			Key = "sj/delete"
+			netType="get"
+			Url="sj/delete" />
+		<Node
+			Key = "sj/resetpassword"
+			netType="get"
+			Url="sj/resetpassword" />
+		<Node
+			Key = "sj_bj/query"
+			netType="get"
+			Url="sj_bj/query" />
+		<Node
+			Key = "sj_bj/save"
+			netType="get"
+			Url="sj_bj/save" />
+		<Node
+			Key = "sj_rz/query"
+			netType="get"
+			Url="sj_rz/query" />
+		<Node
+			Key = "sj_rz/rz"
+			netType="get"
+			Url="sj_rz/rz" />
+		<Node
+			Key = "sj_sc/query"
+			netType="get"
+			Url="sj_sc/query" />
+		<Node
+			Key = "sj_sc/save"
+			netType="get"
+			Url="sj_sc/save" />
+		<Node
+			Key = "sj_tjc/query"
+			netType="get"
+			Url="sj_tjc/query" />
+		<Node
+			Key = "sj_tjc/delete"
+			netType="get"
+			Url="sj_tjc/delete" />
+		<Node
+			Key = "sj_tjc/save"
+			netType="get"
+			Url="sj_tjc/save" />
+		<Node
+			Key = "sj_truck/query"
+			netType="get"
+			Url="sj_truck/query" />
+		<Node
+			Key = "sj_truck/save"
+			netType="get"
+			Url="sj_truck/save" />
+		<Node
+			Key = "sj_yjfk/query"
+			netType="get"
+			Url="sj_yjfk/query" />
+		<Node
+			Key = "sj_yjfk/save"
+			netType="get"
+			Url="sj_yjfk/save" />
+		<Node
+			Key = "sj_zx/query"
+			netType="get"
+			Url="sj_zx/query" />
+		<Node
+			Key = "sj_zx/save"
+			netType="get"
+			Url="sj_zx/save" />
+		<Node
+			Key = "yd/query"
+			netType="get"
+			Url="yd/query" />
+		<Node
+			Key = "yd/save"
+			netType="get"
+			Url="yd/save" />
+		<Node
+			Key = "yzm/send"
+			netType="get"
+			Url="yzm/send" />
+	</Node>
+
+	<!--GpsWebApi-->
+	<Node Key="gps" Url="http://123.57.24.26/gpswebapi/">
+		<Node
+			Key="bd0911upload"
+			netType="get"
+			Url="gps/bd09llupload"/>
+		<Node
+			Key = "getpoints"
+			netType="get"
+			Url="gps/getpoints" />
+		<Node
+			Key = "getgps"
+			netType="get"
+			Url="gps/getgps" />
+		<Node
+			Key = "gettopgps"
+			netType="get"
+			Url="gps/gettopgps" />
+		<Node
+			Key = "getaddress"
+			netType="get"
+			Url="gps/getaddress"/>
+	</Node>
+
+	<!--VerWebApi-->
+	<Node Key="ver" Url="http://123.57.24.26/verwebapi/">
+		<Node
+			Key = "getnew"
+			netType="get"
+			Url="version/getnew"/>
+	</Node>
+
+	<!--CrashWebApi-->
+	<Node Key="crash" Url="http://123.57.24.26/crashwebapi/">
+		<Node
+			Key = "crash"
+			netType="get"
+			Url="crash/report"/>
+	</Node>
+
+</url>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<url>
+	<!--BaseWebapi-->
+
+	<!--GpsWebApi-->
+	<Node Key="gps" Url="http://123.57.24.26/gpswebapi/">
+		<Node
+			Key="bd0911upload"
+			netType="get"
+			Url="gps/bd09llupload"/>
+		<Node
+			Key = "getpoints"
+			netType="get"
+			Url="gps/getpoints" />
+		<Node
+			Key = "getgps"
+			netType="get"
+			Url="gps/getgps" />
+		<Node
+			Key = "gettopgps"
+			netType="get"
+			Url="gps/gettopgps" />
+		<Node
+			Key = "gps/getaddress"
+			netType="get"
+			Url="gps/getaddress"/>
+	</Node>
+
+	<!--VerWebApi-->
+	<Node Key="ver" Url="http://123.57.24.26/verwebapi/">
+		<Node
+			Key = "getnew"
+			netType="get"
+			Url="version/getnew"/>
+	</Node>
+
+	<!--CrashWebApi-->
+	<Node Key="crash" Url="http://123.57.24.26/crashwebapi/">
+		<Node
+			Key = "crash"
+			netType="get"
+			Url="crash/report"/>
+	</Node>
+
+
+</url>
