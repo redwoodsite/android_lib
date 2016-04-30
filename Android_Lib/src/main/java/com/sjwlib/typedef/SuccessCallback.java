@@ -7,7 +7,7 @@ import java.util.HashMap;
  * Created by yangzhixi on 2016/4/15.
  */
 
-public abstract class SuccessCallback {
+public abstract class SuccessCallback extends RequestCallbackBase {
 
     public void onCallback() {
 

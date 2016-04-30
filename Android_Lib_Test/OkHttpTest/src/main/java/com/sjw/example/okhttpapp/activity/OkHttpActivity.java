@@ -8,20 +8,18 @@ import android.widget.EditText;
 import com.alibaba.fastjson.JSON;
 import com.sjw.example.okhttpapp.R;
 import com.sjw.example.okhttpapp.bean.Address;
-import com.sjw.example.okhttpapp.bean.Gps;
-import com.sjwlib.activity.DataActivity;
+import com.sjwlib.typedef.RequestParamsCallback;
 import com.sjwlib.typedef.SuccessCallback;
 import com.sjwlib.net.WebApi;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppDataActivity {
+public class OkHttpActivity extends AppDataActivity {
 
     @Bind(R.id.edtResult) EditText edtResult;
     @Bind(R.id.btnParams_a) Button btn_Params_a;
@@ -31,6 +29,8 @@ public class MainActivity extends AppDataActivity {
     @Bind(R.id.btnParams_e) Button btn_Params_e;
     @Bind(R.id.btnParams_f) Button btn_Params_f;
     @Bind(R.id.btnParams_g) Button btn_Params_g;
+    @Bind(R.id.btnParams_h) Button btn_Params_h;
+
 
     @OnClick(R.id.btnParams_a) void params0_click(){
         // params
@@ -161,6 +161,22 @@ public class MainActivity extends AppDataActivity {
         // invoke webapi
         WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
     }
+    @OnClick(R.id.btnParams_h) void params7_click() {
+        // params
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("cphs", "豫J12345:13598870467");
+        params.put("top", "5");
+        // callback
+        RequestParamsCallback<Address>  callback = new RequestParamsCallback<Address>() {
+            @Override
+            public void onSuccess(Address params) {
+                String value = "area=" + params.getArea() + ",address=" + params.getAddress();
+                edtResult.setText(value);
+            }
+        };
+        // invoke webapi
+        //WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
+    }
     @OnClick(R.id.btnXUtils) void xutils_click(){
         Intent activtiy = new Intent(this, XUtilsActivity.class);
         startActivity(activtiy);
@@ -178,7 +194,7 @@ public class MainActivity extends AppDataActivity {
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_okhttp);
         ButterKnife.bind(this);
         btn_Params_a.setText("onCallback()");
         btn_Params_b.setText("String接口: onCallback(String result)");
@@ -187,6 +203,7 @@ public class MainActivity extends AppDataActivity {
         btn_Params_e.setText("HashMap接口：onCallback(HasMap<String,String> resp_params)");
         btn_Params_f.setText("HashMap接口：onCallback(HasMap<String,String> resp_params, ArrayList<HashMap<String,String>> resp_data)");
         btn_Params_g.setText("HashMap接口：onCallback(String params, String data, HasMap<String,String> resp_params, ArrayList<HashMap<String,String>> resp_data)");
+        btn_Params_g.setText("public void onSuccess(T params){");
     }
 
     @Override

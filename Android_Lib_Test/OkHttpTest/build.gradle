@@ -54,7 +54,7 @@ android {
 dependencies {
     provided fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':Android_Lib')
-    compile(name: 'Android_Lib-release', ext: 'aar')
+    //compile(name: 'Android_Lib-release', ext: 'aar')
     //引入aar项目
     //compile project(':xUtils3-master')
 }
