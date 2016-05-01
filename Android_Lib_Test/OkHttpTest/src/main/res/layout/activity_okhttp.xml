@@ -55,6 +55,13 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/btn_error"
+        android:textSize="13dp"
+        android:text="error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
         android:id="@+id/btnXUtils"
         android:textSize="13dp"
         android:text="xUtils"

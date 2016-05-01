@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.sjwlib.R;
+import com.sjwlib.net.WebApi;
 
 /**
  * Created by yangzhixi on 2016/4/15.
@@ -39,7 +40,7 @@ public class WorkProgressActivity extends AlertDialog {
 
     private void initViews() {
         // 显示于parent_activity底部，类似于小米MIUI效果
-        getWindow().setGravity(Gravity.BOTTOM);
+        //getWindow().setGravity(Gravity.BOTTOM);
         android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
         p.width = ActionBar.LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(p);
@@ -83,8 +84,10 @@ public class WorkProgressActivity extends AlertDialog {
 
     @Override
     public void dismiss() {
-        if(parentActivity!=null && !parentActivity.isFinishing())
+        if(parentActivity!=null && !parentActivity.isFinishing()){
             super.dismiss();
+            WebApi.getInstance().cancelRequest();
+        }
     }
 
     @Override

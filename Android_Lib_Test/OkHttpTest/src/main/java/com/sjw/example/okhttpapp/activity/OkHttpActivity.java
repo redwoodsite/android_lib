@@ -9,8 +9,9 @@ import com.alibaba.fastjson.JSON;
 import com.sjw.example.okhttpapp.R;
 import com.sjw.example.okhttpapp.bean.Gps;
 import com.sjwlib.typedef.RequestDataCallback;
+import com.sjwlib.typedef.RequestDataParamsCallback;
 import com.sjwlib.typedef.RequestParamsCallback;
-import com.sjwlib.typedef.SuccessCallback;
+import com.sjwlib.typedef.RequestStringCallback;
 import com.sjwlib.net.WebApi;
 
 import java.util.HashMap;
@@ -36,14 +37,14 @@ public class OkHttpActivity extends AppDataActivity {
         params.put("cphs", "豫J12345:13598870467");
         params.put("top", "1");
         // callback
-        SuccessCallback callback = new SuccessCallback() {
+        RequestStringCallback callback = new RequestStringCallback() {
             @Override
             public void onSuccess() {
                 edtResult.setText("执行成功了!");
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
     }
     @OnClick(R.id.btn_string_result) void string_result_click(){
         // params
@@ -51,14 +52,14 @@ public class OkHttpActivity extends AppDataActivity {
         params.put("cphs", "豫J12345:13598870467");
         params.put("top", "1");
         // callback
-        SuccessCallback callback = new SuccessCallback() {
+        RequestStringCallback callback = new RequestStringCallback() {
             @Override
-            public void onCallback(String result) {
+            public void onSuccess(String result) {
                 edtResult.setText(result);
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
     }
     @OnClick(R.id.btn_string_result_params) void string_result_params(){
         // params
@@ -66,15 +67,15 @@ public class OkHttpActivity extends AppDataActivity {
         params.put("cphs", "豫J12345:13598870467");
         params.put("top", "1");
         // callback
-        SuccessCallback callback = new SuccessCallback() {
+        RequestStringCallback callback = new RequestStringCallback() {
             @Override
-            public void onCallback(String result, String params) {
+            public void onSuccess(String result, String params) {
                 String value = String.format("result=%s\r\n\r\nparams=", result, params);
                 edtResult.setText(value);
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
     }
     @OnClick(R.id.btn_string_result_params_data) void string_result_params_data_click(){
         // params
@@ -82,15 +83,15 @@ public class OkHttpActivity extends AppDataActivity {
         params.put("cphs", "豫J12345:13598870467");
         params.put("top", "1");
         // callback
-        SuccessCallback callback = new SuccessCallback() {
+        RequestStringCallback callback = new RequestStringCallback() {
             @Override
-            public void onCallback(String result, String params, String data) {
+            public void onSuccess(String result, String params, String data) {
                 String value = String.format("result=%s\r\n\r\nparams=%s\r\n\r\ndata=%s", result, params, data);
                 edtResult.setText(value);
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
     }
     @OnClick(R.id.btn_object_params) void object_params_click() {
         // params
@@ -106,15 +107,15 @@ public class OkHttpActivity extends AppDataActivity {
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
     }
     @OnClick(R.id.btn_object_params_data) void object_params_data_click() {
         // params
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("cphs", "豫J12345:13598870467");
-        params.put("top", "0");
+        params.put("top", "2");
         // callback--bean
-        RequestDataCallback<HashMap<String,String>, List<Gps>> callback = new RequestDataCallback<HashMap<String, String>, List<Gps>>() {
+        RequestDataParamsCallback<HashMap<String,String>, List<Gps>> callback = new RequestDataParamsCallback<HashMap<String, String>, List<Gps>>() {
             @Override
             public void onSuccess(HashMap<String, String> params, List<Gps> dataList) {
                 String strParams = JSON.toJSONString(params);
@@ -123,8 +124,35 @@ public class OkHttpActivity extends AppDataActivity {
                 edtResult.setText(value);
             }
         };
+        callback.setShowError(true);
+        callback.setShowProgress(false);
         // invoke api
-        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback, true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
+
+    }
+    @OnClick(R.id.btn_error) void error_click() {
+        // params
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("cphs", "豫J12345:13598870467");
+        params.put("top", "0");
+        // callback--bean
+        RequestDataParamsCallback<HashMap<String,String>, List<Gps>> callback = new RequestDataParamsCallback<HashMap<String, String>, List<Gps>>() {
+            @Override
+            public void onSuccess(HashMap<String, String> params, List<Gps> dataList) {
+                String strParams = JSON.toJSONString(params);
+                String strData = JSON.toJSONString(dataList);
+                String value = String.format("params=%s\r\n\r\ndata=%s", strParams, strData);
+                edtResult.setText(value);
+            }
+            @Override
+            public void onFail(String error){
+                edtResult.setText(error);
+            }
+        };
+        callback.setShowError(false);
+        callback.setShowProgress(true);
+        // invoke api
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
 
     }
     @OnClick(R.id.btnXUtils) void xutils_click(){

@@ -50,6 +50,8 @@ public abstract class BaseActivity extends Activity {
 		super.onPause();
 	}
 
+
+
 //	public RequestManager getRequestManager() {
 //		return requestManager;
 //	}
