@@ -5,31 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/edtResult"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:gravity="left"
-        android:text="结果" />
 
     <Button
-        android:id="@+id/btn_none"
+        android:id="@+id/btn_okhttp"
         android:textSize="13dp"
-        android:text=""
+        android:text="OkHttp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_string_result"
+        android:id="@+id/btn_xutils"
         android:textSize="13dp"
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_string_result_params"
-        android:textSize="13dp"
-        android:text=""
+        android:text="xUtils"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

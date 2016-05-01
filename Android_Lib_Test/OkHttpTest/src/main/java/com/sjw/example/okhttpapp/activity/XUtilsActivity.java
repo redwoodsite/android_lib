@@ -4,17 +4,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.alibaba.fastjson.JSON;
 import com.sjw.example.okhttpapp.R;
-import com.sjw.example.okhttpapp.bean.Address;
-import com.sjwlib.net.WebApi;
-import com.sjwlib.typedef.SuccessCallback;
-
-import org.apache.http.HttpException;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,11 +13,11 @@ import butterknife.OnClick;
 public class XUtilsActivity extends AppDataActivity {
 
     @Bind(R.id.edtResult) EditText edtResult;
-    @Bind(R.id.btnParams_a) Button btn_Params_a;
-    @Bind(R.id.btnParams_b) Button btn_Params_b;
-    @Bind(R.id.btnParams_c) Button btn_Params_c;
+    @Bind(R.id.btn_none) Button btn_Params_a;
+    @Bind(R.id.btn_string_result) Button btn_Params_b;
+    @Bind(R.id.btn_string_result_params) Button btn_Params_c;
 
-    @OnClick(R.id.btnParams_a) void params0_click(){
+    @OnClick(R.id.btn_none) void params0_click(){
 //        HttpUtils http = new HttpUtils();
 //        HttpHandler handler = http.download("http://apache.dataguru.cn/httpcomponents/httpclient/source/httpcomponents-client-4.2.5-src.zip",
 //                "/sdcard/httpcomponents-client-4.2.5-src.zip",
@@ -58,10 +48,10 @@ public class XUtilsActivity extends AppDataActivity {
 //                });
 
     }
-    @OnClick(R.id.btnParams_b) void params1_click(){
+    @OnClick(R.id.btn_string_result) void params1_click(){
 
     }
-    @OnClick(R.id.btnParams_c) void params2_click(){
+    @OnClick(R.id.btn_string_result_params) void params2_click(){
 
     }
 

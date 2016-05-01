@@ -9,10 +9,7 @@ import java.util.HashMap;
 
 public abstract class SuccessCallback extends RequestCallbackBase {
 
-    public void onCallback() {
-
-    }
-
+    //  params接收response_params
     public void onCallback(String result) {
 
     }
@@ -24,21 +21,6 @@ public abstract class SuccessCallback extends RequestCallbackBase {
 
     // params接收response_params，data接收response_data
     public void onCallback(String result, String params, String data) {
-
-    }
-
-    // resp_params接收HasMap<~>
-    public void onCallback(HashMap<String,String> resp_params) {
-
-    }
-
-    public void onCallback(HashMap<String,String> resp_params, ArrayList<HashMap<String, String>> resp_data) {
-
-    }
-
-    // 全接口
-    public void onCallback(String params, String data,
-                           HashMap<String,String> resp_params, ArrayList<HashMap<String, String>> resp_data) {
 
     }
 

@@ -7,13 +7,14 @@ import android.widget.EditText;
 
 import com.alibaba.fastjson.JSON;
 import com.sjw.example.okhttpapp.R;
-import com.sjw.example.okhttpapp.bean.Address;
+import com.sjw.example.okhttpapp.bean.Gps;
+import com.sjwlib.typedef.RequestDataCallback;
 import com.sjwlib.typedef.RequestParamsCallback;
 import com.sjwlib.typedef.SuccessCallback;
 import com.sjwlib.net.WebApi;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -22,36 +23,33 @@ import butterknife.OnClick;
 public class OkHttpActivity extends AppDataActivity {
 
     @Bind(R.id.edtResult) EditText edtResult;
-    @Bind(R.id.btnParams_a) Button btn_Params_a;
-    @Bind(R.id.btnParams_b) Button btn_Params_b;
-    @Bind(R.id.btnParams_c) Button btn_Params_c;
-    @Bind(R.id.btnParams_d) Button btn_Params_d;
-    @Bind(R.id.btnParams_e) Button btn_Params_e;
-    @Bind(R.id.btnParams_f) Button btn_Params_f;
-    @Bind(R.id.btnParams_g) Button btn_Params_g;
-    @Bind(R.id.btnParams_h) Button btn_Params_h;
+    @Bind(R.id.btn_none) Button btn_none;
+    @Bind(R.id.btn_string_result) Button btn_string_result;
+    @Bind(R.id.btn_string_result_params) Button btn_string_result_params;
+    @Bind(R.id.btn_string_result_params_data) Button btn_string_result_params_data;
+    @Bind(R.id.btn_object_params) Button btn_object_params;
+    @Bind(R.id.btn_object_params_data) Button btn_object_params_data;
 
-
-    @OnClick(R.id.btnParams_a) void params0_click(){
+    @OnClick(R.id.btn_none) void string_none_click(){
         // params
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put("b_lng", "117.699041");
-        params.put("b_lat", "39.030338");
+        params.put("cphs", "豫J12345:13598870467");
+        params.put("top", "1");
         // callback
         SuccessCallback callback = new SuccessCallback() {
             @Override
-            public void onCallback() {
+            public void onSuccess() {
                 edtResult.setText("执行成功了!");
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gps/getaddress", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
     }
-    @OnClick(R.id.btnParams_b) void params1_click(){
+    @OnClick(R.id.btn_string_result) void string_result_click(){
         // params
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put("b_lng", "117.699041");
-        params.put("b_lat", "39.030338");
+        params.put("cphs", "豫J12345:13598870467");
+        params.put("top", "1");
         // callback
         SuccessCallback callback = new SuccessCallback() {
             @Override
@@ -60,122 +58,74 @@ public class OkHttpActivity extends AppDataActivity {
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gps/getaddress", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
     }
-    @OnClick(R.id.btnParams_c) void params2_click(){
+    @OnClick(R.id.btn_string_result_params) void string_result_params(){
         // params
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put("b_lng", "117.699041");
-        params.put("b_lat", "39.030338");
+        params.put("cphs", "豫J12345:13598870467");
+        params.put("top", "1");
         // callback
         SuccessCallback callback = new SuccessCallback() {
             @Override
             public void onCallback(String result, String params) {
-                Address address = JSON.parseObject(params,Address.class);
-                String value = "area=" + address.getArea() + ",address=" + address.getAddress();
+                String value = String.format("result=%s\r\n\r\nparams=", result, params);
                 edtResult.setText(value);
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gps/getaddress", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
     }
-    @OnClick(R.id.btnParams_d) void params3_click(){
+    @OnClick(R.id.btn_string_result_params_data) void string_result_params_data_click(){
         // params
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put("b_lng", "117.699041");
-        params.put("b_lat", "39.030338");
+        params.put("cphs", "豫J12345:13598870467");
+        params.put("top", "1");
         // callback
         SuccessCallback callback = new SuccessCallback() {
             @Override
             public void onCallback(String result, String params, String data) {
-                Address address = JSON.parseObject(params,Address.class);
-                String value = "area=" + address.getArea() + ",address=" + address.getAddress();
+                String value = String.format("result=%s\r\n\r\nparams=%s\r\n\r\ndata=%s", result, params, data);
                 edtResult.setText(value);
             }
         };
         // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gps/getaddress", params, callback,true);
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
     }
-    @OnClick(R.id.btnParams_e) void params4_click() {
+    @OnClick(R.id.btn_object_params) void object_params_click() {
         // params
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("cphs", "豫J12345:13598870467");
-        params.put("top", "5");
+        params.put("top", "1");
         // callback
-        SuccessCallback callback =  new SuccessCallback() {
+        RequestParamsCallback<HashMap<String,String>> callback = new RequestParamsCallback<HashMap<String, String>>() {
             @Override
-            public void onCallback(HashMap<String,String> resp_params) {
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("[resp_params]=");
-                stringBuilder.append("cph=" + resp_params.get("cph"));
-                stringBuilder.append("phone="+resp_params.get("phone"));
-                stringBuilder.append("top="+resp_params.get("top"));
-                edtResult.setText(stringBuilder.toString());
+            public void onSuccess(HashMap<String, String> params) {
+                String value = JSON.toJSONString(params);
+                edtResult.setText("params="+value);
             }
         };
         // invoke webapi
         WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
     }
-    @OnClick(R.id.btnParams_f) void params5_click() {
+    @OnClick(R.id.btn_object_params_data) void object_params_data_click() {
         // params
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("cphs", "豫J12345:13598870467");
-        params.put("top", "5");
-        // callback
-        SuccessCallback callback =  new SuccessCallback() {
-            public void onCallback(HashMap<String,String> resp_params, ArrayList<HashMap<String,String>> resp_data) {
-                StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("[resp_params]=");
-                stringBuilder.append("cph=" + resp_params.get("cph"));
-                stringBuilder.append("phone="+resp_params.get("phone"));
-                stringBuilder.append("top="+resp_params.get("top"));
-                stringBuilder.append("\n[resp_data]=");
-                for( HashMap<String,String> gps : resp_data){
-                    String value = String.format(gps.get("cph") + "\narea=%s,address=%s", gps.get("area"), gps.get("address"));
-                    stringBuilder.append(value);
-                }
-                edtResult.setText(stringBuilder.toString());
-            }
-        };
-        // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
-    }
-    @OnClick(R.id.btnParams_g) void params6_click() {
-        // params
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("cphs", "豫J12345:13598870467");
-        params.put("top", "5");
-        // callback
-        SuccessCallback callback =  new SuccessCallback() {
-            public void onCallback(String params, String data, HashMap<String,String> resp_params, ArrayList<HashMap<String,String>> resp_data) {
-                StringBuilder stringBuilder = new StringBuilder();
-                String value = String.format("[resp_params]=top=%s,cph=%s, phone=%s\n", resp_params.get("top"), resp_params.get("cph"), resp_params.get("phone"));
-                stringBuilder.append(value + "[resp_data]=");
-                for( HashMap<String,String> gps : resp_data){
-                    value = String.format(gps.get("cph") + "\narea=%s,address=%s", gps.get("area"), gps.get("address"));
-                    stringBuilder.append(value);
-                }
-                edtResult.setText(stringBuilder.toString());
-            }
-        };
-        // invoke webapi
-        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
-    }
-    @OnClick(R.id.btnParams_h) void params7_click() {
-        // params
-        HashMap<String, String> params = new HashMap<String, String>();
-        params.put("cphs", "豫J12345:13598870467");
-        params.put("top", "5");
-        // callback
-        RequestParamsCallback<Address>  callback = new RequestParamsCallback<Address>() {
+        params.put("top", "0");
+        // callback--bean
+        RequestDataCallback<HashMap<String,String>, List<Gps>> callback = new RequestDataCallback<HashMap<String, String>, List<Gps>>() {
             @Override
-            public void onSuccess(Address params) {
-                String value = "area=" + params.getArea() + ",address=" + params.getAddress();
+            public void onSuccess(HashMap<String, String> params, List<Gps> dataList) {
+                String strParams = JSON.toJSONString(params);
+                String strData = JSON.toJSONString(dataList);
+                String value = String.format("params=%s\r\n\r\ndata=%s", strParams, strData);
                 edtResult.setText(value);
             }
         };
-        // invoke webapi
-        //WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback,true);
+        // invoke api
+        WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback, true);
+
     }
     @OnClick(R.id.btnXUtils) void xutils_click(){
         Intent activtiy = new Intent(this, XUtilsActivity.class);
@@ -196,14 +146,13 @@ public class OkHttpActivity extends AppDataActivity {
     protected void initViews(Bundle savedInstanceState) {
         setContentView(R.layout.activity_okhttp);
         ButterKnife.bind(this);
-        btn_Params_a.setText("onCallback()");
-        btn_Params_b.setText("String接口: onCallback(String result)");
-        btn_Params_c.setText("String接口: onCallback(String result, String params)");
-        btn_Params_d.setText("String接口: onCallback(String result, String params, String data)");
-        btn_Params_e.setText("HashMap接口：onCallback(HasMap<String,String> resp_params)");
-        btn_Params_f.setText("HashMap接口：onCallback(HasMap<String,String> resp_params, ArrayList<HashMap<String,String>> resp_data)");
-        btn_Params_g.setText("HashMap接口：onCallback(String params, String data, HasMap<String,String> resp_params, ArrayList<HashMap<String,String>> resp_data)");
-        btn_Params_g.setText("public void onSuccess(T params){");
+        btn_none.setText("onSuccess()");
+        btn_string_result.setText("String: onSuccess(String result)");
+        btn_string_result_params.setText("String: onSuccess(String result, String params)");
+        btn_string_result_params_data.setText("String: onSuccess(String result, String params, String data)");
+        btn_object_params.setText("Object：onSuccess(T params)");
+        btn_object_params_data.setText("Object：onSuccess(E params, F data)");
+
     }
 
     @Override

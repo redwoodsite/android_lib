@@ -11,4 +11,5 @@ public abstract class RequestCallbackBase {
     public void onFail(String error){
 
     }
+
 }

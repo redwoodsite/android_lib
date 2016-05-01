@@ -13,56 +13,42 @@
         android:text="结果" />
 
     <Button
-        android:id="@+id/btnParams_a"
+        android:id="@+id/btn_none"
         android:textSize="13dp"
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnParams_b"
+        android:id="@+id/btn_string_result"
         android:textSize="13dp"
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnParams_c"
+        android:id="@+id/btn_string_result_params"
         android:textSize="13dp"
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnParams_d"
+        android:id="@+id/btn_string_result_params_data"
         android:textSize="12dp"
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnParams_e"
+        android:id="@+id/btn_object_params"
         android:textSize="13dp"
         android:text=""
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnParams_f"
-        android:textSize="13dp"
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnParams_g"
-        android:textSize="13dp"
-        android:text=""
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnParams_h"
+        android:id="@+id/btn_object_params_data"
         android:textSize="13dp"
         android:text=""
         android:layout_width="match_parent"
