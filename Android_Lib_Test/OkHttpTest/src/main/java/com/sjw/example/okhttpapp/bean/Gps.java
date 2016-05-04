@@ -4,7 +4,15 @@ package com.sjw.example.okhttpapp.bean;
  * Created by yangzhixi on 2016/4/8.
  */
 public class Gps {
-    private String cph,phone,area,address;
+    private String cph,phone,area,address,runtime;
+
+    public String getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(String runtime) {
+        this.runtime = runtime;
+    }
 
     public String getCph() {
         return cph;

@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.Call;
+import okhttp3.OkHttpClient;
 
 /**
  * Created by yangzhixi on 2016/4/15.
@@ -85,7 +86,9 @@ public class WebApi {
                 if (callbackBase.isShowProgress()) // 关闭进度
                     workProgressActivity.dismiss();
                 String error = e.getMessage();
-                boolean isShowSysteError = !error.equals("Socket closed") && !error.equals("Canceled");
+                boolean isShowSysteError = !error.equals("Socket closed")
+                        && !error.equals("Canceled")
+                        && !error.equals("Socket is Closed");
                 if(callbackBase.isShowError() && isShowSysteError)
                     new AlertDialog.Builder(context)
                             .setTitle("出错了").setMessage(error)
@@ -111,6 +114,17 @@ public class WebApi {
                         String data = jsonObject.containsKey(WebApi.response_data)
                                 ?jsonObject.getString("response_data")
                                 :"";
+
+                        if(false == params.equals("")){
+                            params = params.replaceAll("(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2})","$1 $2");
+                        }
+                        if(false == page.equals("")){
+                            page = page.replaceAll("(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2})","$1 $2");
+                        }
+                        if(false == data.equals("")){
+                            data = data.replaceAll("(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2})","$1 $2");
+                        }
+
                         // 无参回调必定执行
                         callbackBase.onSuccess();
                         // RequestStringCallBack
@@ -172,8 +186,8 @@ public class WebApi {
         }
 
         try{
-            if(requestCall!=null)
-                requestCall.cancel();
+            /*if(requestCall!=null)
+                requestCall.cancel();*/
             requestCall = null;
             if (netType.equals("get")) {
                 requestCall = OkHttpUtils.get().url(url).params((Map) params).build();
@@ -186,7 +200,7 @@ public class WebApi {
         }catch (Exception ex){
             String error ="执行Api出现异常:" + ex.getMessage();
             if(callbackBase.isShowProgress()){
-                Toast.makeText(context,error, Toast.LENGTH_SHORT);
+                Toast.makeText(context,error, Toast.LENGTH_SHORT).show();
             }
             callbackBase.onFail(error);
         }
