@@ -22,6 +22,8 @@ import com.zhy.http.okhttp.request.RequestCall;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -37,7 +39,11 @@ public class WebApi {
     public static final String response_data = "response_data";
     private static WebApi service = null;
     private RequestCall requestCall = null;
+    private String address = "";
 
+    public String getAddress() {
+        return address;
+    }
 
     private WebApi() {
 
@@ -57,6 +63,10 @@ public class WebApi {
         return type;
     }
 
+    public void setAddress(String address){
+        this.address = address;
+    }
+
     public void invoke(final Context context,
                        final String apiKey,
                        Map<String, String> params,
@@ -74,6 +84,10 @@ public class WebApi {
         }
         // 配置请求参数
         String url = urlData.getUrl().toLowerCase();
+        if(address.equals(""))
+            address = match(url, "\\d+\\.\\d+\\.\\d+\\.\\d+");
+        else
+            url = url.replaceAll("\\d+\\.\\d+\\.\\d+\\.\\d+", address);
         String netType = urlData.getNetType().toLowerCase();
 
         final WorkProgressActivity workProgressActivity = new WorkProgressActivity(context);
@@ -209,5 +223,15 @@ public class WebApi {
     public void cancelRequest(){
         if(requestCall!=null)
             requestCall.cancel();
+    }
+
+    public String match(String input, String regex){
+        Pattern pattern = Pattern.compile(regex,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(input);
+        if(matcher.find()){
+            return matcher.group();
+        }else{
+            return input;
+        }
     }
 }
