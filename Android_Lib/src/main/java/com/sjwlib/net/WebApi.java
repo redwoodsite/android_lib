@@ -6,6 +6,13 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.sjwlib.activity.WorkProgressActivity;
 import com.sjwlib.typedef.RequestCallbackBase;
 import com.sjwlib.typedef.RequestDataCallback;
@@ -22,6 +29,7 @@ import com.zhy.http.okhttp.request.RequestCall;
 import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,6 +45,7 @@ public class WebApi {
     public static final String response_page = "response_page";
     public static final String response_params = "response_params";
     public static final String response_data = "response_data";
+
     private static WebApi service = null;
     private RequestCall requestCall = null;
     private String address = "";
@@ -67,10 +76,11 @@ public class WebApi {
         this.address = address;
     }
 
-    public void invoke(final Context context,
-                       final String apiKey,
-                       Map<String, String> params,
-                       final RequestCallbackBase callbackBase) {
+
+    public void invokeOkhttp(final Context context,
+                             final String apiKey,
+                             Map<String, String> params,
+                             final RequestCallbackBase callbackBase) {
         // 根据key从url.xml中找到url结点
         final URLData urlData = UrlConfigManager.findURL(context, apiKey);
         if (urlData == null) {
@@ -83,11 +93,15 @@ public class WebApi {
             return;
         }
         // 配置请求参数
+        final String[] regexArray = new String[]{
+                "\\d+\\.\\d+\\.\\d+\\.\\d+",
+                "(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2}(?:\\d+)?)"
+        };
         String url = urlData.getUrl().toLowerCase();
         if(address.equals(""))
-            address = match(url, "\\d+\\.\\d+\\.\\d+\\.\\d+");
+            address = match(url, regexArray[0]);
         else
-            url = url.replaceAll("\\d+\\.\\d+\\.\\d+\\.\\d+", address);
+            url = url.replaceAll(regexArray[0], address);
         String netType = urlData.getNetType().toLowerCase();
 
         final WorkProgressActivity workProgressActivity = new WorkProgressActivity(context);
@@ -130,13 +144,13 @@ public class WebApi {
                                 :"";
 
                         if(false == params.equals("")){
-                            params = params.replaceAll("(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2})","$1 $2");
+                            params = params.replaceAll(regexArray[1],"$1 $2");
                         }
                         if(false == page.equals("")){
-                            page = page.replaceAll("(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2})","$1 $2");
+                            page = page.replaceAll(regexArray[1],"$1 $2");
                         }
                         if(false == data.equals("")){
-                            data = data.replaceAll("(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2})","$1 $2");
+                            data = data.replaceAll(regexArray[1],"$1 $2");
                         }
 
                         // 无参回调必定执行
@@ -212,6 +226,179 @@ public class WebApi {
             requestCall.writeTimeOut(30000);
             requestCall.execute(callback);
         }catch (Exception ex){
+            if (callbackBase.isShowProgress()) // 关闭进度
+                workProgressActivity.dismiss();
+
+            String error ="执行Api出现异常:" + ex.getMessage();
+            if(callbackBase.isShowProgress()){
+                Toast.makeText(context,error, Toast.LENGTH_SHORT).show();
+            }
+            callbackBase.onFail(error);
+        }
+    }
+
+    public void invoke(final Context context,
+                       final String apiKey,
+                       final Map<String, String> params,
+                       final RequestCallbackBase callbackBase) {
+        // 根据key从url.xml中找到url结点
+        final URLData urlData = UrlConfigManager.findURL(context, apiKey);
+        if (urlData == null) {
+            String error = "没有找到API!";
+            if(callbackBase.isShowError()) // 未找到api强制显示错误
+                new AlertDialog.Builder(context)
+                        .setTitle("出错了").setMessage(error)
+                        .setPositiveButton("确定", null).show();
+            callbackBase.onFail(error);
+            return;
+        }
+        // 配置请求参数
+        final String[] regexArray = new String[]{
+                "\\d+\\.\\d+\\.\\d+\\.\\d+",
+                "(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2}(?:\\d+)?)"
+        };
+        String url = urlData.getUrl().toLowerCase();
+        if(address.equals(""))
+            address = match(url, regexArray[0]);
+        else
+            url = url.replaceAll(regexArray[0], address);
+        String netType = urlData.getNetType().toLowerCase();
+
+        // 加入？参数
+        String strParams = "";
+        Set<Map.Entry<String, String>> sets = params.entrySet();
+        for(Map.Entry<String, String> entry : sets) {
+            if(strParams.equals(""))
+                strParams = entry.getKey() + "=" + entry.getValue();
+            else
+                strParams += "&" + entry.getKey() + "=" + entry.getValue();
+        }
+        if(!strParams.equals(""))
+            url += "?" + strParams;
+
+        final WorkProgressActivity workProgressActivity = new WorkProgressActivity(context);
+        if (callbackBase.isShowProgress()) // 打开进度
+            workProgressActivity.showTips();
+
+        // 执行get请求
+        final StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String result) {
+                if (callbackBase.isShowProgress()) // 关闭进度
+                    workProgressActivity.dismiss();
+                if (callbackBase != null) {
+                    if (result.contains(resp_succ)) { // 处理服务端返回成功的数据()
+                        JSONObject jsonObject = JSON.parseObject(result);
+                        // [response_params]
+                        String params = jsonObject.containsKey(WebApi.response_params)
+                                ?jsonObject.getString("response_params")
+                                :"";
+                        // [response_page]
+                        String page = jsonObject.containsKey(WebApi.response_page)
+                                ?jsonObject.getString("response_page")
+                                :"";
+                        // [response_data]
+                        String data = jsonObject.containsKey(WebApi.response_data)
+                                ?jsonObject.getString("response_data")
+                                :"";
+
+                        if(false == params.equals("")){
+                            params = params.replaceAll(regexArray[1],"$1 $2");
+                        }
+                        if(false == page.equals("")){
+                            page = page.replaceAll(regexArray[1],"$1 $2");
+                        }
+                        if(false == data.equals("")){
+                            data = data.replaceAll(regexArray[1],"$1 $2");
+                        }
+
+                        // 无参回调必定执行
+                        callbackBase.onSuccess();
+                        // RequestStringCallBack
+                        if(callbackBase.getClass().getSuperclass().equals(RequestStringCallback.class)){
+                            RequestStringCallback stringCallback = (RequestStringCallback)callbackBase;
+                            stringCallback.onSuccess(result);
+                            stringCallback.onSuccess(result,params);
+                            stringCallback.onSuccess(result, params, data);
+                        } if(callbackBase.getClass().getSuperclass().equals(RequestParamsCallback.class)){ // RequestParamsCallback
+                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
+                            Object paramsObject = JSON.parseObject(params, genericParamsType);//
+                            RequestParamsCallback paramsCallback = (RequestParamsCallback)callbackBase;
+                            paramsCallback.onSuccess(paramsObject);
+                        }else if(callbackBase.getClass().getSuperclass().equals(RequestDataCallback.class)){ // RequestDataCallback
+                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 0);
+                            Object dataObject = JSON.parseObject(data, genericDataType);//
+                            RequestDataCallback dataCallback = (RequestDataCallback)callbackBase;
+                            dataCallback.onSuccess(dataObject);
+                        }
+                        else if(callbackBase.getClass().getSuperclass().equals(RequestDataParamsCallback.class)){ // RequestDataParamsCallback
+                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
+                            Object paramsObject = JSON.parseObject(params, genericParamsType);
+                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 1);
+                            Object dataObject = JSON.parseObject(data, genericDataType);//
+                            RequestDataParamsCallback dataCallback = (RequestDataParamsCallback)callbackBase;
+                            dataCallback.onSuccess(paramsObject, dataObject);
+                        }
+                        else if(callbackBase.getClass().getSuperclass().equals(RequestDataParamsPageCallback.class)){ // RequestDataParamsPageCallback
+                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
+                            Object paramsObject = JSON.parseObject(params, genericParamsType);
+                            java.lang.reflect.Type genericPageType = getGenericType(callbackBase, 1);
+                            Object pageObject = JSON.parseObject(page, genericPageType);
+                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 2);
+                            Object dataObject = JSON.parseObject(data, genericDataType);
+                            RequestDataParamsPageCallback dataCallback = (RequestDataParamsPageCallback)callbackBase;
+                            dataCallback.onSuccess(paramsObject, pageObject, dataObject);
+                        }
+                    } else if(result.contains(resp_fail)) { // 处理服务端返回失败的数据
+                        ResponseJsonError error = JSON.parseObject(result, ResponseJsonError.class);
+                        if(callbackBase.isShowError())
+                            new AlertDialog.Builder(context)
+                                    .setTitle("出错了").setMessage(error.error_msg)
+                                    .setPositiveButton("确定", null).show();
+                        callbackBase.onFail(error.error_msg);
+                    }else { // 接口没有按规约设计
+                        String error = "接口不符合规约!";
+                        if(callbackBase.isShowError())
+                            new AlertDialog.Builder(context)
+                                    .setTitle("出错了").setMessage(error)
+                                    .setPositiveButton("确定", null).show();
+                        callbackBase.onFail(error);
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                if (callbackBase.isShowProgress()) // 关闭进度
+                    workProgressActivity.dismiss();
+                String error = volleyError.getMessage();
+                if(error==null) error="未知异常!";
+                if(callbackBase.isShowError())
+                    new AlertDialog.Builder(context)
+                            .setTitle("出错了").setMessage(error)
+                            .setPositiveButton("确定", null).show();
+                callbackBase.onFail(error);
+            }
+        }){
+           /* @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> map = new HashMap<String,String>();
+                map.put("apikey","f71e5f1e08cd5a7e42a7e9aa70d22458");
+                return map;
+            }*/
+        };
+        stringRequest.setTag("sjwapi");
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        try{
+            requestQueue.cancelAll("sjwapi");
+            requestQueue.add(stringRequest);
+            //勿加此句，requestQueue.add函数中会自动调用start() arequestQueue.start();
+        }catch (Exception ex){
             String error ="执行Api出现异常:" + ex.getMessage();
             if(callbackBase.isShowProgress()){
                 Toast.makeText(context,error, Toast.LENGTH_SHORT).show();
@@ -221,8 +408,8 @@ public class WebApi {
     }
 
     public void cancelRequest(){
-        if(requestCall!=null)
-            requestCall.cancel();
+        //if(requestCall!=null)
+        //    requestCall.cancel();
     }
 
     public String match(String input, String regex){
@@ -235,3 +422,38 @@ public class WebApi {
         }
     }
 }
+
+/**
+ * @param tag              标识
+ * @param networkLostTouch 无网络访问时的回调接口
+public static <T> void addQueue(Request<T> request, String tag, OnNetworkLostTouch networkLostTouch) {
+    //如果request为空，则不予加入请求队列
+    if (request == null) {
+        return;
+    }
+    //如果tag标识为空或者空字符串，那么应给予warn，但是仍能继续请求网络
+    if (StringUtils.isBlank(tag)) {
+        LogCus.w("此次的网络请求未设置有效的tag，将无法通过cancleRequest取消网络请求");
+    }
+
+    //先检查网络是否可用
+    if (!NetWorkUtils.isNetworkConnected()) {
+        networkLostTouch.lostTouch(ResourceUtils.getString(R.string.network_not_avaliable));
+        return;
+    }
+
+    request.setRetryPolicy(
+            new DefaultRetryPolicy(
+                    DEFAULT_TIMEOUT_MS,//默认超时时间
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,//默认最大尝试次数
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            )
+    );
+
+    request.setTag(tag);
+    mTags.add(tag);
+    mRequestQueue.add(request);
+
+    //我去，妹的纠结了很久的"com.android.volley.NoConnectionError: java.io.InterruptedIOException"原来就是因为增加了这句话
+//        mRequestQueue.start();
+}*/

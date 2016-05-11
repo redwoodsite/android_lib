@@ -44,6 +44,7 @@ public class OkHttpActivity extends AppDataActivity {
             }
         };
         // invoke webapi
+        //WebApi.getInstance().setAddress("192.168.0.1"); // 开启另一个IP
         WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
     }
     @OnClick(R.id.btn_string_result) void string_result_click(){
@@ -58,6 +59,7 @@ public class OkHttpActivity extends AppDataActivity {
                 edtResult.setText(result);
             }
         };
+        callback.setShowProgress(false);
         // invoke webapi
         WebApi.getInstance().invoke(this, "gps.gettopgps", params, callback);
     }

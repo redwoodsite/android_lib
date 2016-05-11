@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.android.volley.toolbox.Volley;
 import com.sjw.example.okhttpapp.R;
 
 import butterknife.Bind;
@@ -17,6 +18,11 @@ public class MainActivity extends AppBaseActivity {
         Intent activity = new Intent(this, OkHttpActivity.class);
         startActivity(activity);
     }
+    @OnClick(R.id.btn_volley) void volley(){
+        Intent activity = new Intent(this, VolleyActivity.class);
+        startActivity(activity);
+
+    }
 
     @OnClick(R.id.btn_xutils) void xutils(){
         Intent activity = new Intent(this, XUtilsActivity.class);
@@ -25,6 +31,8 @@ public class MainActivity extends AppBaseActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
         super.onCreate(savedInstanceState);
     }
 
@@ -35,8 +43,7 @@ public class MainActivity extends AppBaseActivity {
 
     @Override
     protected void initViews(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
     }
 
 }
