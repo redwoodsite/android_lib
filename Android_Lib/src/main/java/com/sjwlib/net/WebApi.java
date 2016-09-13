@@ -6,14 +6,17 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.sjwlib.activity.WorkProgressActivity;
+import com.sjwlib.typedef.ApiRequestParams;
 import com.sjwlib.typedef.RequestCallbackBase;
 import com.sjwlib.typedef.RequestDataCallback;
 import com.sjwlib.typedef.RequestDataParamsPageCallback;
@@ -22,11 +25,15 @@ import com.sjwlib.typedef.RequestParamsCallback;
 import com.sjwlib.typedef.ResponseJsonError;
 import com.sjwlib.typedef.RequestStringCallback;
 import com.sjwlib.typedef.URLData;
+import com.sjwlib.utils.ReflectionUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
 
+import org.apache.http.Header;
+
 import java.lang.reflect.ParameterizedType;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -34,7 +41,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import okhttp3.Call;
-import okhttp3.OkHttpClient;
 
 /**
  * Created by yangzhixi on 2016/4/15.
@@ -45,13 +51,25 @@ public class WebApi {
     public static final String response_page = "response_page";
     public static final String response_params = "response_params";
     public static final String response_data = "response_data";
+    private static final int timeout = 30000;
 
     private static WebApi service = null;
     private RequestCall requestCall = null;
-    private String address = "";
+    // 配置请求参数
+    final String[] regexArray = new String[]{
+            "\\d+\\.\\d+\\.\\d+\\.\\d+",
+            "(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2})(?:\\.\\d+)?"
+    };
 
-    public String getAddress() {
-        return address;
+    public String getAddress(Context context, String apiKey) {
+        final URLData urlData = UrlConfigManager.findAddress(context, apiKey);
+        if(urlData!=null){
+            String url = urlData.getUrl();
+            url = match(url, regexArray[0]);
+            return url;
+        }else{
+            return "";
+        }
     }
 
     private WebApi() {
@@ -66,361 +84,329 @@ public class WebApi {
     }
 
     // index:泛型参数索引,默认从0开始
-    private java.lang.reflect.Type getGenericType(Object callback, int index){
+    private java.lang.reflect.Type getGenericType(Object callback, int index) {
         java.lang.reflect.Type mySupperClass = callback.getClass().getGenericSuperclass();
-        java.lang.reflect.Type type = ((ParameterizedType)mySupperClass).getActualTypeArguments()[index];
+        java.lang.reflect.Type type = ((ParameterizedType) mySupperClass).getActualTypeArguments()[index];
         return type;
     }
 
-    public void setAddress(String address){
-        this.address = address;
-    }
-
-
-    public void invokeOkhttp(final Context context,
+    public void invokeOkHttp(final Context context,
                              final String apiKey,
                              Map<String, String> params,
                              final RequestCallbackBase callbackBase) {
-        // 根据key从url.xml中找到url结点
-        final URLData urlData = UrlConfigManager.findURL(context, apiKey);
-        if (urlData == null) {
-            String error = "没有找到API!";
-            if(callbackBase.isShowError()) // 未找到api强制显示错误
-                new AlertDialog.Builder(context)
-                        .setTitle("出错了").setMessage(error)
-                        .setPositiveButton("确定", null).show();
-            callbackBase.onFail(error);
-            return;
-        }
-        // 配置请求参数
-        final String[] regexArray = new String[]{
-                "\\d+\\.\\d+\\.\\d+\\.\\d+",
-                "(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2}(?:\\d+)?)"
-        };
-        String url = urlData.getUrl().toLowerCase();
-        if(address.equals(""))
-            address = match(url, regexArray[0]);
-        else
-            url = url.replaceAll(regexArray[0], address);
-        String netType = urlData.getNetType().toLowerCase();
-
-        final WorkProgressActivity workProgressActivity = new WorkProgressActivity(context);
-        if (callbackBase.isShowProgress()) // 打开进度
-            workProgressActivity.showTips();
-
-        StringCallback callback = new StringCallback() {
-            @Override
-            public void onError(Call call, Exception e) {
-                if (callbackBase.isShowProgress()) // 关闭进度
-                    workProgressActivity.dismiss();
-                String error = e.getMessage();
-                boolean isShowSysteError = !error.equals("Socket closed")
-                        && !error.equals("Canceled")
-                        && !error.equals("Socket is Closed");
-                if(callbackBase.isShowError() && isShowSysteError)
-                    new AlertDialog.Builder(context)
-                            .setTitle("出错了").setMessage(error)
-                            .setPositiveButton("确定", null).show();
-                callbackBase.onFail(error);
+        final ApiRequestParams apiRequestParams = getApiRequestParams(context, apiKey, callbackBase);
+        if (apiRequestParams.isParamsOk()) {
+            String url = apiRequestParams.getUrl();
+            String netType = apiRequestParams.getNetType();
+            final StringCallback callback = apiRequestParams.getResultCallback();
+            if (params == null) {
+                params = new HashMap();
             }
-            @Override
-            public void onResponse(String result) {
-                if (callbackBase.isShowProgress()) // 关闭进度
-                    workProgressActivity.dismiss();
-                if (callbackBase != null) {
-                    if (result.contains(resp_succ)) { // 处理服务端返回成功的数据()
-                        JSONObject jsonObject = JSON.parseObject(result);
-                        // [response_params]
-                        String params = jsonObject.containsKey(WebApi.response_params)
-                                ?jsonObject.getString("response_params")
-                                :"";
-                        // [response_page]
-                        String page = jsonObject.containsKey(WebApi.response_page)
-                                ?jsonObject.getString("response_page")
-                                :"";
-                        // [response_data]
-                        String data = jsonObject.containsKey(WebApi.response_data)
-                                ?jsonObject.getString("response_data")
-                                :"";
 
-                        if(false == params.equals("")){
-                            params = params.replaceAll(regexArray[1],"$1 $2");
-                        }
-                        if(false == page.equals("")){
-                            page = page.replaceAll(regexArray[1],"$1 $2");
-                        }
-                        if(false == data.equals("")){
-                            data = data.replaceAll(regexArray[1],"$1 $2");
-                        }
-
-                        // 无参回调必定执行
-                        callbackBase.onSuccess();
-                        // RequestStringCallBack
-                        if(callbackBase.getClass().getSuperclass().equals(RequestStringCallback.class)){
-                            RequestStringCallback stringCallback = (RequestStringCallback)callbackBase;
-                            stringCallback.onSuccess(result);
-                            stringCallback.onSuccess(result,params);
-                            stringCallback.onSuccess(result, params, data);
-                        } if(callbackBase.getClass().getSuperclass().equals(RequestParamsCallback.class)){ // RequestParamsCallback
-                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
-                            Object paramsObject = JSON.parseObject(params, genericParamsType);//
-                            RequestParamsCallback paramsCallback = (RequestParamsCallback)callbackBase;
-                            paramsCallback.onSuccess(paramsObject);
-                        }else if(callbackBase.getClass().getSuperclass().equals(RequestDataCallback.class)){ // RequestDataCallback
-                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 0);
-                            Object dataObject = JSON.parseObject(data, genericDataType);//
-                            RequestDataCallback dataCallback = (RequestDataCallback)callbackBase;
-                            dataCallback.onSuccess(dataObject);
-                        }
-                        else if(callbackBase.getClass().getSuperclass().equals(RequestDataParamsCallback.class)){ // RequestDataParamsCallback
-                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
-                            Object paramsObject = JSON.parseObject(params, genericParamsType);
-                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 1);
-                            Object dataObject = JSON.parseObject(data, genericDataType);//
-                            RequestDataParamsCallback dataCallback = (RequestDataParamsCallback)callbackBase;
-                            dataCallback.onSuccess(paramsObject, dataObject);
-                        }
-                        else if(callbackBase.getClass().getSuperclass().equals(RequestDataParamsPageCallback.class)){ // RequestDataParamsPageCallback
-                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
-                            Object paramsObject = JSON.parseObject(params, genericParamsType);
-                            java.lang.reflect.Type genericPageType = getGenericType(callbackBase, 1);
-                            Object pageObject = JSON.parseObject(page, genericPageType);
-                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 2);
-                            Object dataObject = JSON.parseObject(data, genericDataType);
-                            RequestDataParamsPageCallback dataCallback = (RequestDataParamsPageCallback)callbackBase;
-                            dataCallback.onSuccess(paramsObject, pageObject, dataObject);
-                        }
-                    } else if(result.contains(resp_fail)) { // 处理服务端返回失败的数据
-                        ResponseJsonError error = JSON.parseObject(result, ResponseJsonError.class);
-                        if(callbackBase.isShowError())
-                            new AlertDialog.Builder(context)
-                                    .setTitle("出错了").setMessage(error.error_msg)
-                                    .setPositiveButton("确定", null).show();
-                        callbackBase.onFail(error.error_msg);
-                    }else { // 接口没有按规约设计
-                        String error = "接口不符合规约!";
-                            if(callbackBase.isShowError())
-                                new AlertDialog.Builder(context)
-                                        .setTitle("出错了").setMessage(error)
-                                        .setPositiveButton("确定", null).show();
-                        callbackBase.onFail(error);
-                    }
+            try {
+                requestCall = null;
+                if (netType.equals("get")) {
+                    requestCall = OkHttpUtils.get().url(url).params((Map) params).build();
                 }
+                if (netType.equals("post")) {
+                    requestCall = OkHttpUtils.post().url(url).params((Map) params).build();
+                }
+                requestCall.writeTimeOut(timeout);
+                requestCall.execute(callback);
+            } catch (Exception ex) {
+                String error = "执行Api出现异常:" + ex.getMessage();
+                if (callbackBase.isShowProgress()) {
+                    Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+                }
+                callbackBase.onError(error);
             }
-        };
-        // 执行get请求
-        if (params == null) {
-            params = new HashMap();
-        }
-
-        try{
-            /*if(requestCall!=null)
-                requestCall.cancel();*/
-            requestCall = null;
-            if (netType.equals("get")) {
-                requestCall = OkHttpUtils.get().url(url).params((Map) params).build();
-            }
-            if (netType.equals("post")) {
-                requestCall = OkHttpUtils.post().url(url).params((Map) params).build();
-            }
-            requestCall.writeTimeOut(30000);
-            requestCall.execute(callback);
-        }catch (Exception ex){
-            if (callbackBase.isShowProgress()) // 关闭进度
-                workProgressActivity.dismiss();
-
-            String error ="执行Api出现异常:" + ex.getMessage();
-            if(callbackBase.isShowProgress()){
-                Toast.makeText(context,error, Toast.LENGTH_SHORT).show();
-            }
-            callbackBase.onFail(error);
         }
     }
 
-    public void invoke(final Context context,
-                       final String apiKey,
-                       final Map<String, String> params,
-                       final RequestCallbackBase callbackBase) {
+    public void invokeVolley(final Context context,
+                            final String apiKey,
+                            final Map<String, String> params,
+                            final RequestCallbackBase callbackBase) {
+
+        final ApiRequestParams apiRequestParams = getApiRequestParams(context, apiKey, callbackBase);
+        if (apiRequestParams.isParamsOk()) {
+            String url = apiRequestParams.getUrl();
+            String netType = apiRequestParams.getNetType();
+            final StringCallback callback = apiRequestParams.getResultCallback();
+
+            // 加入？参数
+            String strParams = "";
+            Set<Map.Entry<String, String>> sets = params.entrySet();
+            for (Map.Entry<String, String> entry : sets) {
+                if (strParams.equals(""))
+                    strParams = URLEncoder.encode(entry.getKey()) + "=" + URLEncoder.encode(entry.getValue());
+                else
+                    strParams += "&" + URLEncoder.encode(entry.getKey()) + "=" + URLEncoder.encode(entry.getValue());
+            }
+            if (!strParams.equals(""))
+                url += "?" + strParams;
+
+            // 执行get请求
+            final StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String result) {
+                    apiRequestParams.getResultCallback().onResponse(result);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError volleyError) {
+                    String error = volleyError.getMessage();
+                    if (error == null) error = "未知异常!";
+                    apiRequestParams.getResultCallback().onError(null, new Exception(error));
+                }
+            });
+            stringRequest.setTag("sjwapi");
+            RequestQueue requestQueue = Volley.newRequestQueue(context);
+            requestCall.writeTimeOut(timeout);
+            try {
+                //requestQueue.cancelAll("sjwapi");
+                requestQueue.add(stringRequest);
+                //勿加此句，requestQueue.add函数中会自动调用start() arequestQueue.start();
+            } catch (Exception ex) {
+                String error = "执行Api出现异常:" + ex.getMessage();
+                if (callbackBase.isShowProgress()) {
+                    Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+                }
+                callbackBase.onError(error);
+            }
+        }
+    }
+
+    public void invokeAsyncHttp(final Context context, String apiKey, Map<String, String> params, final RequestCallbackBase callbackBase) {
+        final ApiRequestParams apiRequestParams = getApiRequestParams(context, apiKey, callbackBase);
+        if (apiRequestParams.isParamsOk()) {
+            String url = apiRequestParams.getUrl();
+            String netType = apiRequestParams.getNetType();
+            try {
+                if (params == null) {
+                    params = new HashMap();
+                }
+                AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
+                asyncHttpClient.setTimeout(timeout);
+                if (netType.equals("get")) {
+                    asyncHttpClient.get(url, new RequestParams(params), new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int code, Header[] headers, byte[] bytes) {
+                            String result = new String(bytes);
+                            apiRequestParams.getResultCallback().onResponse(result);
+                        }
+                        @Override
+                        public void onFailure(int code, Header[] headers, byte[] bytes, Throwable throwable) {
+                            apiRequestParams.getResultCallback().onError(null, new Exception(throwable.getMessage()));
+                        }
+                    });
+                }
+                if (netType.equals("post")) {
+                    asyncHttpClient.post(url, new RequestParams(params), new AsyncHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int code, Header[] headers, byte[] bytes) {
+                            String result = new String(bytes);
+                            apiRequestParams.getResultCallback().onResponse(result);
+                        }
+
+                        @Override
+                        public void onFailure(int code, Header[] headers, byte[] bytes, Throwable throwable) {
+                            apiRequestParams.getResultCallback().onError(null, new Exception(throwable.getMessage()));
+                        }
+                    });
+                }
+            } catch (Exception var12) {
+                String error = "执行Api出现异常:" + var12.getMessage();
+                if (callbackBase.isShowProgress()) {
+                    Toast.makeText(context, error, Toast.LENGTH_SHORT);
+                }
+                callbackBase.onError(error);
+            }
+        }
+    }
+
+    /*
+    得到回调和URL参数
+     */
+
+    private ApiRequestParams getApiRequestParams(final Context context, String apiKey, final RequestCallbackBase callbackBase) {
+        ApiRequestParams apiRequestParams = new ApiRequestParams();
         // 根据key从url.xml中找到url结点
         final URLData urlData = UrlConfigManager.findURL(context, apiKey);
         if (urlData == null) {
             String error = "没有找到API!";
-            if(callbackBase.isShowError()) // 未找到api强制显示错误
+            if (callbackBase.isShowError()) // 未找到api强制显示错误
                 new AlertDialog.Builder(context)
                         .setTitle("出错了").setMessage(error)
                         .setPositiveButton("确定", null).show();
-            callbackBase.onFail(error);
-            return;
-        }
-        // 配置请求参数
-        final String[] regexArray = new String[]{
-                "\\d+\\.\\d+\\.\\d+\\.\\d+",
-                "(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2}(?:\\d+)?)"
-        };
-        String url = urlData.getUrl().toLowerCase();
-        if(address.equals(""))
-            address = match(url, regexArray[0]);
-        else
-            url = url.replaceAll(regexArray[0], address);
-        String netType = urlData.getNetType().toLowerCase();
+            callbackBase.onError(error);
+            apiRequestParams.setParamsOk(false);
+        }else {
+            String url = urlData.getUrl();
+            // 如果指定局部IP地址，则将url.xml中的地址替换为局部的IP地址
+            if (!"".equals(callbackBase.getAddress())) {
+                url = url.replaceAll(regexArray[0], callbackBase.getAddress());
+            }
+            String netType = urlData.getNetType().toLowerCase();
 
-        // 加入？参数
-        String strParams = "";
-        Set<Map.Entry<String, String>> sets = params.entrySet();
-        for(Map.Entry<String, String> entry : sets) {
-            if(strParams.equals(""))
-                strParams = entry.getKey() + "=" + entry.getValue();
-            else
-                strParams += "&" + entry.getKey() + "=" + entry.getValue();
-        }
-        if(!strParams.equals(""))
-            url += "?" + strParams;
+            // 默认创建进度
+            final WorkProgressActivity workProgressActivity = new WorkProgressActivity(context);
+            // 打开进度
+            if (callbackBase.isShowProgress()) {
+                if (!callbackBase.getTips().equals(""))
+                    workProgressActivity.show(callbackBase.getTips());
+                else
+                    workProgressActivity.showDef();
+            }
 
-        final WorkProgressActivity workProgressActivity = new WorkProgressActivity(context);
-        if (callbackBase.isShowProgress()) // 打开进度
-            workProgressActivity.showTips();
-
-        // 执行get请求
-        final StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String result) {
-                if (callbackBase.isShowProgress()) // 关闭进度
-                    workProgressActivity.dismiss();
-                if (callbackBase != null) {
-                    if (result.contains(resp_succ)) { // 处理服务端返回成功的数据()
-                        JSONObject jsonObject = JSON.parseObject(result);
-                        // [response_params]
-                        String params = jsonObject.containsKey(WebApi.response_params)
-                                ?jsonObject.getString("response_params")
-                                :"";
-                        // [response_page]
-                        String page = jsonObject.containsKey(WebApi.response_page)
-                                ?jsonObject.getString("response_page")
-                                :"";
-                        // [response_data]
-                        String data = jsonObject.containsKey(WebApi.response_data)
-                                ?jsonObject.getString("response_data")
-                                :"";
-
-                        if(false == params.equals("")){
-                            params = params.replaceAll(regexArray[1],"$1 $2");
-                        }
-                        if(false == page.equals("")){
-                            page = page.replaceAll(regexArray[1],"$1 $2");
-                        }
-                        if(false == data.equals("")){
-                            data = data.replaceAll(regexArray[1],"$1 $2");
-                        }
-
-                        // 无参回调必定执行
-                        callbackBase.onSuccess();
-                        // RequestStringCallBack
-                        if(callbackBase.getClass().getSuperclass().equals(RequestStringCallback.class)){
-                            RequestStringCallback stringCallback = (RequestStringCallback)callbackBase;
-                            stringCallback.onSuccess(result);
-                            stringCallback.onSuccess(result,params);
-                            stringCallback.onSuccess(result, params, data);
-                        } if(callbackBase.getClass().getSuperclass().equals(RequestParamsCallback.class)){ // RequestParamsCallback
-                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
-                            Object paramsObject = JSON.parseObject(params, genericParamsType);//
-                            RequestParamsCallback paramsCallback = (RequestParamsCallback)callbackBase;
-                            paramsCallback.onSuccess(paramsObject);
-                        }else if(callbackBase.getClass().getSuperclass().equals(RequestDataCallback.class)){ // RequestDataCallback
-                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 0);
-                            Object dataObject = JSON.parseObject(data, genericDataType);//
-                            RequestDataCallback dataCallback = (RequestDataCallback)callbackBase;
-                            dataCallback.onSuccess(dataObject);
-                        }
-                        else if(callbackBase.getClass().getSuperclass().equals(RequestDataParamsCallback.class)){ // RequestDataParamsCallback
-                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
-                            Object paramsObject = JSON.parseObject(params, genericParamsType);
-                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 1);
-                            Object dataObject = JSON.parseObject(data, genericDataType);//
-                            RequestDataParamsCallback dataCallback = (RequestDataParamsCallback)callbackBase;
-                            dataCallback.onSuccess(paramsObject, dataObject);
-                        }
-                        else if(callbackBase.getClass().getSuperclass().equals(RequestDataParamsPageCallback.class)){ // RequestDataParamsPageCallback
-                            java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
-                            Object paramsObject = JSON.parseObject(params, genericParamsType);
-                            java.lang.reflect.Type genericPageType = getGenericType(callbackBase, 1);
-                            Object pageObject = JSON.parseObject(page, genericPageType);
-                            java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 2);
-                            Object dataObject = JSON.parseObject(data, genericDataType);
-                            RequestDataParamsPageCallback dataCallback = (RequestDataParamsPageCallback)callbackBase;
-                            dataCallback.onSuccess(paramsObject, pageObject, dataObject);
-                        }
-                    } else if(result.contains(resp_fail)) { // 处理服务端返回失败的数据
-                        ResponseJsonError error = JSON.parseObject(result, ResponseJsonError.class);
-                        if(callbackBase.isShowError())
-                            new AlertDialog.Builder(context)
-                                    .setTitle("出错了").setMessage(error.error_msg)
-                                    .setPositiveButton("确定", null).show();
-                        callbackBase.onFail(error.error_msg);
-                    }else { // 接口没有按规约设计
-                        String error = "接口不符合规约!";
-                        if(callbackBase.isShowError())
+            StringCallback callback = new StringCallback() {
+                @Override
+                public void onError(Call call, Exception e) {
+                    if (callbackBase.isShowProgress()) // 关闭进度
+                        workProgressActivity.dismiss();
+                    String error = e.getMessage();
+                    if(error == null) error = "";
+                    /*boolean isShowSysteError = !error.equals("Socket closed")
+                            && !error.equals("Canceled")
+                            && !error.equals("Socket is Closed");
+                    if (callbackBase.isShowError() && isShowSysteError)*/
+                    if(callbackBase.isShowError()){
+                        if(error.startsWith("failed to connect to"))
+                            Toast.makeText(context, "无法连接到网络,请稍侯重试!", Toast.LENGTH_SHORT);
+                        else
                             new AlertDialog.Builder(context)
                                     .setTitle("出错了").setMessage(error)
                                     .setPositiveButton("确定", null).show();
-                        callbackBase.onFail(error);
+                    }
+                    callbackBase.onError(error);
+                }
+
+                @Override
+                public void onResponse(String result) {
+                    if (callbackBase.isShowProgress()) // 关闭进度
+                        workProgressActivity.dismiss();
+                    if (callbackBase != null) {
+                        if (result.contains(resp_succ)) { // 处理服务端返回成功的数据()
+                            JSONObject jsonObject = JSON.parseObject(result);
+                            // [response_params]
+                            String params = jsonObject.containsKey(WebApi.response_params)
+                                    ? jsonObject.getString("response_params")
+                                    : "";
+                            // [response_page]
+                            String page = jsonObject.containsKey(WebApi.response_page)
+                                    ? jsonObject.getString("response_page")
+                                    : "";
+                            // [response_data]
+                            String data = jsonObject.containsKey(WebApi.response_data)
+                                    ? jsonObject.getString("response_data")
+                                    : "";
+
+                            if (false == params.equals("")) {
+                                params = params.replaceAll(regexArray[1], "$1 $2");
+                            }
+                            if (false == page.equals("")) {
+                                page = page.replaceAll(regexArray[1], "$1 $2");
+                            }
+                            if (false == data.equals("")) {
+                                data = data.replaceAll(regexArray[1], "$1 $2");
+                            }
+
+                            // 无参回调必定执行
+                            callbackBase.onSuccess();
+                            if (callbackBase.getClass().getSuperclass().equals(RequestStringCallback.class)) { // RequestStringCallback
+                                RequestStringCallback stringCallback = (RequestStringCallback) callbackBase;
+                                stringCallback.onSuccess(result);
+                                stringCallback.onSuccess(result, params);
+                                stringCallback.onSuccess(result, params, data);
+                            }
+                            if (callbackBase.getClass().getSuperclass().equals(RequestParamsCallback.class)) { // RequestParamsCallback
+                                java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
+                                Object paramsObject = JSON.parseObject(params, genericParamsType);//
+                                RequestParamsCallback paramsCallback = (RequestParamsCallback) callbackBase;
+                                paramsCallback.onSuccess(paramsObject);
+                            } else if (callbackBase.getClass().getSuperclass().equals(RequestDataCallback.class)) { // RequestDataCallback
+                                java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 0);
+                                Object dataObject = null;
+                                try {
+                                    if("".equals(data))
+                                        dataObject = ReflectionUtil.newInstance(genericDataType);
+                                    else
+                                        dataObject = JSON.parseObject(data, genericDataType);
+                                } catch (ClassNotFoundException e) {
+                                    e.printStackTrace();
+                                } catch (InstantiationException e) {
+                                    e.printStackTrace();
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
+                                RequestDataCallback dataCallback = (RequestDataCallback) callbackBase;
+                                dataCallback.onSuccess(dataObject);
+                            } else if (callbackBase.getClass().getSuperclass().equals(RequestDataParamsCallback.class)) { // RequestDataParamsCallback
+                                java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
+                                Object paramsObject = JSON.parseObject(params, genericParamsType);
+                                java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 1);
+                                Object dataObject = null;
+                                try {
+                                    if("".equals(data))
+                                        dataObject = ReflectionUtil.newInstance(genericDataType);
+                                    else
+                                        dataObject = JSON.parseObject(data, genericDataType);
+                                } catch (ClassNotFoundException e) {
+                                    e.printStackTrace();
+                                } catch (InstantiationException e) {
+                                    e.printStackTrace();
+                                } catch (IllegalAccessException e) {
+                                    e.printStackTrace();
+                                }
+                                RequestDataParamsCallback dataCallback = (RequestDataParamsCallback) callbackBase;
+                                dataCallback.onSuccess(paramsObject, dataObject);
+                            } else if (callbackBase.getClass().getSuperclass().equals(RequestDataParamsPageCallback.class)) { // RequestDataParamsPageCallback
+                                java.lang.reflect.Type genericParamsType = getGenericType(callbackBase, 0);
+                                Object paramsObject = JSON.parseObject(params, genericParamsType);
+                                java.lang.reflect.Type genericPageType = getGenericType(callbackBase, 1);
+                                Object pageObject = JSON.parseObject(page, genericPageType);
+                                java.lang.reflect.Type genericDataType = getGenericType(callbackBase, 2);
+                                Object dataObject = JSON.parseObject(data, genericDataType);
+                                RequestDataParamsPageCallback dataCallback = (RequestDataParamsPageCallback) callbackBase;
+                                dataCallback.onSuccess(paramsObject, pageObject, dataObject);
+                            }
+                        } else if (result.contains(resp_fail)) { // 处理服务端返回失败的数据
+                            ResponseJsonError error = JSON.parseObject(result, ResponseJsonError.class);
+                            if (callbackBase.isShowError())
+                                new AlertDialog.Builder(context)
+                                        .setTitle("出错了").setMessage(error.error_msg)
+                                        .setPositiveButton("确定", null).show();
+                            callbackBase.onError(error.error_msg);
+                        } else { // 接口没有按规约设计
+                            String error = "接口不符合规约!";
+                            if (callbackBase.isShowError())
+                                new AlertDialog.Builder(context)
+                                        .setTitle("出错了").setMessage(error)
+                                        .setPositiveButton("确定", null).show();
+                            callbackBase.onError(error);
+                        }
                     }
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
-                if (callbackBase.isShowProgress()) // 关闭进度
-                    workProgressActivity.dismiss();
-                String error = volleyError.getMessage();
-                if(error==null) error="未知异常!";
-                if(callbackBase.isShowError())
-                    new AlertDialog.Builder(context)
-                            .setTitle("出错了").setMessage(error)
-                            .setPositiveButton("确定", null).show();
-                callbackBase.onFail(error);
-            }
-        }){
-           /* @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String,String> map = new HashMap<String,String>();
-                map.put("apikey","f71e5f1e08cd5a7e42a7e9aa70d22458");
-                return map;
-            }*/
-        };
-        stringRequest.setTag("sjwapi");
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        try{
-            requestQueue.cancelAll("sjwapi");
-            requestQueue.add(stringRequest);
-            //勿加此句，requestQueue.add函数中会自动调用start() arequestQueue.start();
-        }catch (Exception ex){
-            String error ="执行Api出现异常:" + ex.getMessage();
-            if(callbackBase.isShowProgress()){
-                Toast.makeText(context,error, Toast.LENGTH_SHORT).show();
-            }
-            callbackBase.onFail(error);
+            };
+            apiRequestParams.setParamsOk(true);
+            apiRequestParams.setUrl(url);
+            apiRequestParams.setResultCallback(callback);
+            apiRequestParams.setNetType(netType);
         }
+
+        return apiRequestParams;
     }
 
-    public void cancelRequest(){
-        //if(requestCall!=null)
-        //    requestCall.cancel();
-    }
-
-    public String match(String input, String regex){
-        Pattern pattern = Pattern.compile(regex,Pattern.CASE_INSENSITIVE);
+    public String match(String input, String regex) {
+        Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(input);
-        if(matcher.find()){
+        if (matcher.find()) {
             return matcher.group();
-        }else{
+        } else {
             return input;
         }
     }
+
 }
 
 /**

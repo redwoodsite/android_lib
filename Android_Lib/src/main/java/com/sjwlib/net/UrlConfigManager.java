@@ -24,28 +24,73 @@ public class UrlConfigManager {
 			eventCode = xmlParser.getEventType();
 			while (eventCode != XmlPullParser.END_DOCUMENT) {
 				switch (eventCode) {
-				case XmlPullParser.START_DOCUMENT:
-					break;
-				case XmlPullParser.START_TAG:
-					if ("Node".equals(xmlParser.getName())) {
-						final String key = xmlParser.getAttributeValue(	null, "Key");
-						if(!keyList.containsKey(key)) {
-							keyList.put(key, xmlParser.getAttributeValue(null, "Url"));
+					case XmlPullParser.START_DOCUMENT:
+						break;
+					case XmlPullParser.START_TAG:
+						if ("Node".equals(xmlParser.getName())) {
+							final String key = xmlParser.getAttributeValue(	null, "Key");
+							if(!keyList.containsKey(key)) {
+								keyList.put(key, xmlParser.getAttributeValue(null, "Url"));
+							}
+							if (key.trim().equals(subKey) && keyList.containsKey(parentKey)) {
+								final URLData urlData = new URLData();
+								String url = keyList.get(parentKey) + xmlParser.getAttributeValue(null,"Url");
+								urlData.setKey(subKey);
+								urlData.setNetType(xmlParser.getAttributeValue(null, "netType"));
+								urlData.setUrl(url);
+								urlData.setParentKey(parentKey);
+								urlData.setSubKey(subKey);
+								return urlData;
+							}
 						}
-						if (key.trim().equals(subKey) && keyList.containsKey(parentKey)) {
-							final URLData urlData = new URLData();
-							String url = keyList.get(parentKey) + xmlParser.getAttributeValue(null,"Url");
-							urlData.setKey(subKey);
-							urlData.setNetType(xmlParser.getAttributeValue(null, "netType"));
-							urlData.setUrl(url);
-							return urlData;
+						break;
+					case XmlPullParser.END_TAG:
+						break;
+					default:
+						break;
+				}
+				eventCode = xmlParser.next();
+			}
+		} catch (final XmlPullParserException e) {
+			e.printStackTrace();
+		} catch (final IOException e) {
+			e.printStackTrace();
+		} finally {
+			xmlParser.close();
+		}
+		return null;
+	}
+
+	public static URLData findAddress(Context context, final String findKey) {
+		final XmlResourceParser xmlParser = context.getResources().getXml(R.xml.url);
+		int eventCode;
+		Map<String,String> keyList = new HashMap<String,String>();
+		try {
+			eventCode = xmlParser.getEventType();
+			while (eventCode != XmlPullParser.END_DOCUMENT) {
+				switch (eventCode) {
+					case XmlPullParser.START_DOCUMENT:
+						break;
+					case XmlPullParser.START_TAG:
+						if ("Node".equals(xmlParser.getName())) {
+							final String key = xmlParser.getAttributeValue(	null, "Key");
+							if(!keyList.containsKey(key)) {
+								keyList.put(key, xmlParser.getAttributeValue(null, "Url"));
+							}
+							if (keyList.containsKey(findKey)) {
+								final URLData urlData = new URLData();
+								String url = keyList.get(findKey) + xmlParser.getAttributeValue(null,"Url");
+								urlData.setKey(findKey);
+								urlData.setNetType(xmlParser.getAttributeValue(null, "netType"));
+								urlData.setUrl(url);
+								return urlData;
+							}
 						}
-					}
-					break;
-				case XmlPullParser.END_TAG:
-					break;
-				default:
-					break;
+						break;
+					case XmlPullParser.END_TAG:
+						break;
+					default:
+						break;
 				}
 				eventCode = xmlParser.next();
 			}

@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -21,8 +20,9 @@ import com.sjwlib.net.WebApi;
 public class WorkProgressActivity extends AlertDialog {
     private Handler handler = new Handler();
 
-    TextView lbl_info;
+    TextView lblInfo;
     Activity parentActivity = null;
+    String info;
 
     public WorkProgressActivity(Context context) {
         super(context);
@@ -45,12 +45,12 @@ public class WorkProgressActivity extends AlertDialog {
         p.width = ActionBar.LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(p);
 
-        lbl_info = (TextView)findViewById(R.id.lbl_info);
-        lbl_info.setText(info);
+        lblInfo = (TextView)findViewById(R.id.lblInfo);
+        lblInfo.setText(info);
         // 如果消息为空串，则不显示消息，同时进度框也要缩小
         if(info.equals("")){
             // 消息不显示
-            lbl_info.setVisibility(View.INVISIBLE);
+            lblInfo.setVisibility(View.INVISIBLE);
             // 进度窗口调整为自适应
             LinearLayout ll_body = (LinearLayout) findViewById(R.id.ll_body);
             /*ViewGroup.LayoutParams params = ll_body.getLayoutParams();
@@ -67,26 +67,35 @@ public class WorkProgressActivity extends AlertDialog {
         this.show("");
     }
 
-    public void showTips(){
-        show("请求中...");
+    public void showDef() {
+        this.show("请求中...");
     }
 
-    String info;
     public void show(String info){
-        this.info = info;
-        if(info.equals("")){
+        try{
+            this.info = info;
+            super.show();
+        /*if(info.equals("")){
             super.show();
         }
         else {
             super.show();
+        }*/
+        }catch (Exception ex){
+
         }
+
     }
 
     @Override
     public void dismiss() {
-        if(parentActivity!=null && !parentActivity.isFinishing()){
-            super.dismiss();
-            WebApi.getInstance().cancelRequest();
+        if(parentActivity!=null /*&& !parentActivity.isFinishing()*/){
+            try{
+                super.dismiss();
+                //WebApi.getInstance().cancelRequest();
+            }catch(Exception ex){
+
+            }
         }
     }
 

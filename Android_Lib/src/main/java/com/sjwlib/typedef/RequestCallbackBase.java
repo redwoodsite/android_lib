@@ -5,6 +5,25 @@ package com.sjwlib.typedef;
  */
 public abstract class RequestCallbackBase {
     private boolean showProgress = true;
+    private String address = "";
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    private String tips = "";
+
+    public String getTips() {
+        return tips;
+    }
+
+    public void setTips(String tips) {
+        this.tips = tips;
+    }
 
     public boolean isShowError() {
         return showError;
@@ -28,7 +47,7 @@ public abstract class RequestCallbackBase {
 
     }
 
-    public void onFail(String error){
+    public void onError(String error){
 
     }
 
