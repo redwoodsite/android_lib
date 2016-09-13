@@ -11,7 +11,7 @@ public final class R {
     public static final class attr {
     }
     public static final class id {
-        public static int lbl_info=0x7f060001;
+        public static int lblInfo=0x7f060001;
         public static int ll_body=0x7f060000;
     }
     public static final class layout {

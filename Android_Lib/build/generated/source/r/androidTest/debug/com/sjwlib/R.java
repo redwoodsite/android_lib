@@ -8,7 +8,7 @@ package com.sjwlib;
 
 public final class R {
 	public static final class id {
-		public static final int lbl_info = 0x7f060001;
+		public static final int lblInfo = 0x7f060001;
 		public static final int ll_body = 0x7f060000;
 	}
 	public static final class layout {
