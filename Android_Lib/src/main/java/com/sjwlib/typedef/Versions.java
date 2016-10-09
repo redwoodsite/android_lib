@@ -1,21 +1,78 @@
 package com.sjwlib.typedef;
 
 public class Versions {
-    public String ver;
-    public String vertype;
-    public String uploader;
-    public String desc;
-    public String file;
-    public int showlog;
+    private int status;
 
-    public int formatVersion(){
-        String ver = this.ver.replace(".", "");
-        return Integer.parseInt(ver);
+    public int getStatus() {
+        return status;
     }
 
-    public static int formatVersion(String version){
-        String ver = version.replace(".","");
-        return Integer.parseInt(ver);
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
+    private String ver;
+    private String vertype;
+    private String userid;
+    private String uploader;
+    private String file;
+    private String desc;
+
+    public String getVer() {
+        return ver;
+    }
+
+    public void setVer(String ver) {
+        this.ver = ver;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    private int showlog;
+
+    public String getVertype() {
+        return vertype;
+    }
+
+    public void setVertype(String vertype) {
+        this.vertype = vertype;
+    }
+
+    public String getUploader() {
+        return uploader;
+    }
+
+    public void setUploader(String uploader) {
+        this.uploader = uploader;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getFile() {
+        return file;
+    }
+
+    public void setFile(String file) {
+        this.file = file;
+    }
+
+    public int getShowlog() {
+        return showlog;
+    }
+
+    public void setShowlog(int showlog) {
+        this.showlog = showlog;
     }
 }
