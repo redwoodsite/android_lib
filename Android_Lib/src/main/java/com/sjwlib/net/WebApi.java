@@ -22,7 +22,7 @@ import com.sjwlib.typedef.RequestDataCallback;
 import com.sjwlib.typedef.RequestDataParamsPageCallback;
 import com.sjwlib.typedef.RequestDataParamsCallback;
 import com.sjwlib.typedef.RequestParamsCallback;
-import com.sjwlib.typedef.ResponseJsonError;
+import com.sjwlib.typedef.ResponseError;
 import com.sjwlib.typedef.RequestStringCallback;
 import com.sjwlib.typedef.URLData;
 import com.sjwlib.utils.ReflectionUtil;
@@ -371,7 +371,7 @@ public class WebApi {
                                 dataCallback.onSuccess(paramsObject, pageObject, dataObject);
                             }
                         } else if (result.contains(resp_fail)) { // 处理服务端返回失败的数据
-                            ResponseJsonError error = JSON.parseObject(result, ResponseJsonError.class);
+                            ResponseError error = JSON.parseObject(result, ResponseError.class);
                             if (callbackBase.isShowError())
                                 new AlertDialog.Builder(context)
                                         .setTitle("出错了").setMessage(error.error_msg)
