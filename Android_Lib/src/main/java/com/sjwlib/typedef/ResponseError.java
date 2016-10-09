@@ -3,7 +3,7 @@ package com.sjwlib.typedef;
 /**
  * Created by Administrator on 2015/9/10.
  */
-public class ResponseJsonError{
+public class ResponseError {
     //public String request_id = "";
     /*public String getrequest_id(){
         return this.request_id;

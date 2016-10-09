@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2015/9/10.
  */
-public class ResponseJson extends ResponseJsonBase{
+public class ResponseOk extends ResponseBase {
     //public String request_id = "";
     //public String getrequest_id(){
         //return this.request_id;
