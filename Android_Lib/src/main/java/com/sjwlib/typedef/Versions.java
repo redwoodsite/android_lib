@@ -22,10 +22,6 @@ public class Versions {
         return ver;
     }
 
-    public void setVer(String ver) {
-        this.ver = ver;
-    }
-
     public String getUserid() {
         return userid;
     }
