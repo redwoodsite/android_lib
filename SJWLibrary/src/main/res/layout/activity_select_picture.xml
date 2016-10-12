@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_sel_pic"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#ffffff">
+    <Button
+        android:id="@+id/btn_camera"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:onClick="camera"
+        android:text="拍照"
+        style="@style/btn_blue" />
+    <Button
+        android:id="@+id/btn_album"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:onClick="album"
+        android:text="从手机相册"
+        style="@style/btn_blue" />
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:onClick="back"
+        android:text="取消"
+        style="@style/btn_blue" />
+</LinearLayout>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="#80000000">-->
+    <!--&lt;!&ndash;<RelativeLayout&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="#198de7"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content">&ndash;&gt;-->
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/img_back"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="36dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="36dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_margin="2dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:paddingLeft="12dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:paddingRight="12dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:paddingTop="8dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:paddingBottom="8dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:onClick="back"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:src="@drawable/title_back" />&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/lbl_title"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:text="选择照片"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textSize="20sp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:background="#198de7"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="#ffffff"/>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<Button&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/btn_finish"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_alignParentRight="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_centerInParent="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:background="#198de7"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="完成"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:onClick="saveGoBack"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textSize="20sp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_marginRight="15dp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textColor="#ffffff"/>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;</RelativeLayout>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/img_picture"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="200dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_margin="15dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:scaleType="fitXY"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:src="@drawable/upload_img_default" />&ndash;&gt;-->
+
+    <!--<LinearLayout-->
+        <!--android:background="@color/white"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+        <!--<Button-->
+            <!--android:id="@+id/btn_camera"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:onClick="camera"-->
+            <!--android:text="拍照"-->
+            <!--style="@style/btn_blue" />-->
+        <!--<Button-->
+            <!--android:id="@+id/btn_album"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:onClick="album"-->
+            <!--android:text="从手机相册"-->
+            <!--style="@style/btn_blue" />-->
+        <!--<Button-->
+            <!--android:id="@+id/btn_back"-->
+            <!--android:layout_marginLeft="20dp"-->
+            <!--android:layout_marginRight="20dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:layout_marginBottom="20dp"-->
+            <!--android:onClick="back"-->
+            <!--android:text="取消"-->
+            <!--style="@style/btn_blue" />-->
+    <!--</LinearLayout>-->
+
+
+<!--</RelativeLayout>-->

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--<string name="clzt_title">发布状态</string>-->
+    <!--<string-array name="clzt">-->
+        <!--<item>有效</item>-->
+        <!--<item>无效</item>-->
+    <!--</string-array>-->
+
+    <!--<string name="hwlx_title">货物类型</string>-->
+    <!--<string-array name="hwlx">-->
+        <!--<item>普货</item>-->
+        <!--<item>冷柜</item>-->
+        <!--<item>危化品</item>-->
+        <!--<item>大件</item>-->
+    <!--</string-array>-->
+
+    <!--<string name="tclx_title">拖车类型</string>-->
+    <!--<string-array name="tclx">-->
+        <!--<item>长板</item>-->
+        <!--<item>短板</item>-->
+    <!--</string-array>-->
+
+</resources>

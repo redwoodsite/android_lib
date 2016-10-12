@@ -12,6 +12,11 @@ public class Versions {
     }
 
     private String ver;
+
+    public void setVer(String ver) {
+        this.ver = ver;
+    }
+
     private String vertype;
     private String userid;
     private String uploader;

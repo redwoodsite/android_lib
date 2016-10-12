@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.sjwlib111"
+    android:versionCode="101"
+    android:versionName="1.0.1" >
+
+    <activity android:name=".select_picture_activity" />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application>
+        <activity android:name="com.sjwlib111.image.imageloader.image.ImagePagerActivity" />
+        <activity
+            android:name="com.sjwlib111.selectpicture.select_picture_activity"
+            android:theme="@style/MyDialogStyleBottom" />
+
+        <!--<activity-->
+            <!--android:name=".ci"-->
+            <!--android:label="SelectCityActivity" >-->
+        <!--</activity>-->
+        <activity android:name="com.sjwlib111.image.touchimageview.Show_Picture_Activity">
+        </activity>
+
+    </application>
+
+</manifest>
