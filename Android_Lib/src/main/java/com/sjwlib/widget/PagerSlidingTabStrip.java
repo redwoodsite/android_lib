@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.sjwlib111.tabstrip;
+package com.sjwlib.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -38,7 +38,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.sjwlib111.R;
+import com.sjwlib.R;
 
 import java.util.Locale;
 
@@ -133,7 +133,7 @@ public class PagerSlidingTabStrip extends HorizontalScrollView {
 		TypedArray a = context.obtainStyledAttributes(attrs, ATTRS);
 
 		tabTextSize = a.getDimensionPixelSize(0, tabTextSize);
-		tabTextColor = a.getColor(1, tabTextColor);
+		tabTextColor = a.getColor(0, tabTextColor);
 
 		a.recycle();
 

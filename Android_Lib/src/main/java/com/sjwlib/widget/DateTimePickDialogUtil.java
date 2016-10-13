@@ -1,4 +1,4 @@
-package com.sjwlib111.datetimepicker;
+package com.sjwlib.widget;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
 
-import com.sjwlib111.R;
+import com.sjwlib.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -81,7 +81,7 @@ public class DateTimePickDialogUtil implements OnDateChangedListener,
 	 */
 	public AlertDialog dateTimePicKDialog(final EditText inputDate) {
 		LinearLayout dateTimeLayout = (LinearLayout) activity
-				.getLayoutInflater().inflate(R.layout.common_datetime, null);
+				.getLayoutInflater().inflate(R.layout.activity_datetimepicker, null);
 		datePicker = (DatePicker) dateTimeLayout.findViewById(R.id.datepicker);
 		timePicker = (TimePicker) dateTimeLayout.findViewById(R.id.timepicker);
 		init(datePicker, timePicker);
@@ -108,7 +108,7 @@ public class DateTimePickDialogUtil implements OnDateChangedListener,
 
 	public AlertDialog dateTimePicKDialog(final TextView inputDate) {
 		LinearLayout dateTimeLayout = (LinearLayout) activity
-				.getLayoutInflater().inflate(R.layout.common_datetime, null);
+				.getLayoutInflater().inflate(R.layout.activity_datetimepicker, null);
 		datePicker = (DatePicker) dateTimeLayout.findViewById(R.id.datepicker);
 		timePicker = (TimePicker) dateTimeLayout.findViewById(R.id.timepicker);
 		init(datePicker, timePicker);

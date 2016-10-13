@@ -1,4 +1,4 @@
-package com.sjwlib111.net;
+package com.sjwlib.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

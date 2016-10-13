@@ -1,4 +1,4 @@
-package com.sjwlib111.datetimepicker;
+package com.sjwlib.widget;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TimePicker;
 
-import com.sjwlib111.R;
+import com.sjwlib.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

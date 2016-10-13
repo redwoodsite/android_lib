@@ -1,4 +1,4 @@
-package com.sjwlib111.tbar;
+package com.sjwlib.widget;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.sjwlib111.R;
+import com.sjwlib.R;
 
 public class Tbar extends RelativeLayout {
     IBack iBack;

@@ -1,4 +1,4 @@
-package com.typedef;
+package com.sjwlib.typedef;
 
 /**
  * Created by yangzhixi on 2016/4/18.
