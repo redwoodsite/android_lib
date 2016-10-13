@@ -8,6 +8,11 @@ android {
         targetSdkVersion 14
         versionCode = 101
         versionName '1.0.1'
+        // .so库64位编译32位
+        ndk {
+            moduleName"native"
+            abiFilters"armeabi","armeabi-v7a","x86","mips"
+        }
     }
     buildTypes {
         release {
