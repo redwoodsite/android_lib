@@ -1,9 +1,31 @@
 package com.sjwlib.utils;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CommUtil {
+
+    public static String getJson(Context context, String fileName) {
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            AssetManager assetManager = context.getAssets();
+            BufferedReader bf = new BufferedReader(new InputStreamReader(assetManager.open(fileName)));
+            String line;
+            while ((line = bf.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return stringBuilder.toString();
+    }
+
     public static boolean greaterThan(Date d1, Date d2){
         String str1 = new SimpleDateFormat("yyyyMMddHHmm").format(d1);
         String str2 = new SimpleDateFormat("yyyyMMddHHmm").format(d2);

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="#198de7">
+        <ImageView
+            android:id="@+id/ivBack"
+            style="@style/TbarIv.Back" />
+        <TextView
+            android:id="@+id/tvArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:text="城市"
+            android:textSize="15sp"
+            android:ellipsize="end"
+            android:textColor="#ffffff" />
+        <ImageView
+            android:id="@+id/ivClear"
+            android:src="@drawable/tbar_clear"
+            style="@style/TbarIv.Action" />
+        <!--<TextView-->
+            <!--android:id="@+id/lbl_OK"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:text="确定"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textColor="@color/lbl_white" />-->
+    </RelativeLayout>
+
+    <!--<RelativeLayout-->
+        <!--android:background="@color/bg_lyt_blue"-->
+        <!--style="@style/LytH">-->
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/lbl_back"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_alignParentLeft="true"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:text="返回"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textSize="18sp"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:textColor="@color/lbl_white" />&ndash;&gt;-->
+        <!--<ImageView-->
+            <!--android:id="@+id/img_back"-->
+            <!--style="@style/ImgTbar.Back" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/lbl_area"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:text="城市"-->
+            <!--android:textSize="15sp"-->
+            <!--android:ellipsize="end"-->
+            <!--android:textColor="@color/lbl_white" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/lbl_OK"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:text="确定"-->
+            <!--android:textSize="18sp"-->
+            <!--android:textColor="@color/lbl_white" />-->
+    <!--</RelativeLayout>-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#c9c9c9" />
+
+    <GridView
+        android:id="@+id/gvProvince"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:scrollbars="none"
+        android:numColumns="3"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:background="#f2f2f2" />
+    <GridView
+        android:id="@+id/gvCity"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:scrollbars="none"
+        android:numColumns="3"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:background="#f2f2f2"
+        android:visibility="gone" />
+    <GridView
+        android:id="@+id/gvDistrict"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:scrollbars="none"
+        android:numColumns="3"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:background="#f2f2f2"
+        android:visibility="gone" />
+
+</LinearLayout>
