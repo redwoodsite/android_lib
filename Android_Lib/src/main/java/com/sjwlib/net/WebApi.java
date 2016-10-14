@@ -91,10 +91,10 @@ public class WebApi {
     }
 
     public void invokeOkHttp(final Context context,
-                             final String apiKey,
+                             URLData urlData,
                              Map<String, String> params,
                              final RequestCallbackBase callbackBase) {
-        final ApiRequestParams apiRequestParams = getApiRequestParams(context, apiKey, callbackBase);
+        final ApiRequestParams apiRequestParams = getApiRequestParams(context, urlData, callbackBase);
         if (apiRequestParams.isParamsOk()) {
             String url = apiRequestParams.getUrl();
             String netType = apiRequestParams.getNetType();
@@ -124,11 +124,11 @@ public class WebApi {
     }
 
     public void invokeVolley(final Context context,
-                            final String apiKey,
+                            final URLData urlData,
                             final Map<String, String> params,
                             final RequestCallbackBase callbackBase) {
 
-        final ApiRequestParams apiRequestParams = getApiRequestParams(context, apiKey, callbackBase);
+        final ApiRequestParams apiRequestParams = getApiRequestParams(context, urlData, callbackBase);
         if (apiRequestParams.isParamsOk()) {
             String url = apiRequestParams.getUrl();
             String netType = apiRequestParams.getNetType();
@@ -177,8 +177,8 @@ public class WebApi {
         }
     }
 
-    public void invokeAsyncHttp(final Context context, String apiKey, Map<String, String> params, final RequestCallbackBase callbackBase) {
-        final ApiRequestParams apiRequestParams = getApiRequestParams(context, apiKey, callbackBase);
+    public void invokeAsyncHttp(final Context context, URLData urlData, Map<String, String> params, final RequestCallbackBase callbackBase) {
+        final ApiRequestParams apiRequestParams = getApiRequestParams(context, urlData, callbackBase);
         if (apiRequestParams.isParamsOk()) {
             String url = apiRequestParams.getUrl();
             String netType = apiRequestParams.getNetType();
@@ -229,10 +229,8 @@ public class WebApi {
     得到回调和URL参数
      */
 
-    private ApiRequestParams getApiRequestParams(final Context context, String apiKey, final RequestCallbackBase callbackBase) {
+    private ApiRequestParams getApiRequestParams(final Context context, URLData urlData, final RequestCallbackBase callbackBase) {
         ApiRequestParams apiRequestParams = new ApiRequestParams();
-        // 根据key从url.xml中找到url结点
-        final URLData urlData = UrlConfigManager.findURL(context, apiKey);
         if (urlData == null) {
             String error = "没有找到API!";
             if (callbackBase.isShowError()) // 未找到api强制显示错误

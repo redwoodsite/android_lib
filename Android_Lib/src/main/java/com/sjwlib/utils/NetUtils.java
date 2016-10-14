@@ -84,6 +84,16 @@ public class NetUtils
         return strNetworkType;
     }
 
+    public static String getImageUrlParams(Context context, ImageView image){
+        ImageSizeUtil.ImageSize is = ImageSizeUtil.getImageViewSize(image);
+        int width = is.width;
+        int height = is.height;
+        String net = getNetworkType(context);
+        String url = "w=" + String.valueOf(width)
+                + "&h=" + String.valueOf(height)
+                + "&net=" + net;
+        return url;
+    }
 
     public static String Base64_Encode(String str) {
         byte[] bytes= str.getBytes();

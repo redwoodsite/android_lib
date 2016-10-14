@@ -9,6 +9,14 @@ public class URLData {
 	private String parentKey = "";
 	private String subKey = "";
 
+	public URLData(){
+
+	}
+	public URLData(String key,String netType){
+		this.key = key;
+		this.netType = netType;
+	}
+
 	public String getParentKey() {
 		return parentKey;
 	}
@@ -23,9 +31,6 @@ public class URLData {
 
 	public void setSubKey(String subKey) {
 		this.subKey = subKey;
-	}
-
-	public URLData() {
 	}
 
 	public String getKey() {
