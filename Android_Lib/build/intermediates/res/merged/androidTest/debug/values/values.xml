@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="PagerSlidingTabStrip"><attr format="color" name="pstsIndicatorColor"/><attr format="color" name="pstsUnderlineColor"/><attr format="color" name="pstsDividerColor"/><attr format="dimension" name="pstsIndicatorHeight"/><attr format="dimension" name="pstsUnderlineHeight"/><attr format="dimension" name="pstsDividerPadding"/><attr format="dimension" name="pstsTabPaddingLeftRight"/><attr format="dimension" name="pstsScrollOffset"/><attr format="reference" name="pstsTabBackground"/><attr format="boolean" name="pstsShouldExpand"/><attr format="boolean" name="pstsTextAllCaps"/></declare-styleable>
+    <declare-styleable name="Tbar"><attr format="integer" name="tbarType"><enum name="logo" value="0"/><enum name="one" value="1"/><enum name="back" value="2"/><enum name="actionIv" value="3"/><enum name="actionTv" value="4"/></attr><attr format="string" name="tbarTitle"/><attr format="color|reference" name="tbarTitleBg"/><attr format="boolean" name="tbarTitleClickable"/><attr format="string" name="tbarActionText"/><attr format="reference" name="tbarActionSrc"/><attr format="reference" name="tbarLogoSrc"/></declare-styleable>
     <string name="app_name">AndroidLib</string>
     <string name="test_name">test_name</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
@@ -11,5 +13,43 @@
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="TbarIv">
+        <item name="android:layout_width">36dp</item>
+        <item name="android:layout_height">36dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:scaleType">fitXY</item>
+    </style>
+    <style name="TbarIv.Action">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+    <style name="TbarIv.Back">
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:src">@drawable/tbar_back</item>
+    </style>
+    <style name="TbarTvAction">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">12dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="TbarTvTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">#198de7</item>
     </style>
 </resources>

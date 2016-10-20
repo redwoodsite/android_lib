@@ -4,81 +4,186 @@
         "map": [
             {
                 "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 47,
-                    "endOffset": 98
-                },
-                "from": {
-                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 47,
-                        "endOffset": 98
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 103,
-                    "endColumn": 47,
-                    "endOffset": 146
-                },
-                "from": {
-                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 103,
-                        "endColumn": 47,
-                        "endOffset": 146
-                    }
-                }
-            },
-            {
-                "to": {
                     "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 151,
-                    "endLine": 10,
-                    "endColumn": 12,
-                    "endOffset": 437
+                    "startOffset": 1212,
+                    "endColumn": 47,
+                    "endOffset": 1255
                 },
                 "from": {
                     "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 151,
-                        "endLine": 10,
-                        "endColumn": 12,
-                        "endOffset": 437
+                        "startOffset": 1212,
+                        "endColumn": 47,
+                        "endOffset": 1255
                     }
                 }
             },
             {
                 "to": {
-                    "startLine": 11,
+                    "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 442,
-                    "endLine": 13,
-                    "endColumn": 12,
-                    "endOffset": 597
+                    "startOffset": 1260,
+                    "endColumn": 47,
+                    "endOffset": 1303
                 },
                 "from": {
                     "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 442,
-                        "endLine": 13,
+                        "startOffset": 1260,
+                        "endColumn": 47,
+                        "endOffset": 1303
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 1308,
+                    "endLine": 12,
+                    "endColumn": 12,
+                    "endOffset": 1594
+                },
+                "from": {
+                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 1308,
+                        "endLine": 12,
                         "endColumn": 12,
-                        "endOffset": 597
+                        "endOffset": 1594
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1599,
+                    "endLine": 15,
+                    "endColumn": 12,
+                    "endOffset": 1754
+                },
+                "from": {
+                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1599,
+                        "endLine": 15,
+                        "endColumn": 12,
+                        "endOffset": 1754
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 1759,
+                    "endLine": 21,
+                    "endColumn": 12,
+                    "endOffset": 2017
+                },
+                "from": {
+                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1759,
+                        "endLine": 21,
+                        "endColumn": 12,
+                        "endOffset": 2017
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 2022,
+                    "endLine": 28,
+                    "endColumn": 12,
+                    "endOffset": 2338
+                },
+                "from": {
+                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 2022,
+                        "endLine": 28,
+                        "endColumn": 12,
+                        "endOffset": 2338
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 29,
+                    "startColumn": 4,
+                    "startOffset": 2343,
+                    "endLine": 36,
+                    "endColumn": 12,
+                    "endOffset": 2718
+                },
+                "from": {
+                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 2343,
+                        "endLine": 36,
+                        "endColumn": 12,
+                        "endOffset": 2718
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 2723,
+                    "endLine": 45,
+                    "endColumn": 12,
+                    "endOffset": 3180
+                },
+                "from": {
+                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 2723,
+                        "endLine": 45,
+                        "endColumn": 12,
+                        "endOffset": 3180
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 46,
+                    "startColumn": 4,
+                    "startOffset": 3185,
+                    "endLine": 53,
+                    "endColumn": 12,
+                    "endOffset": 3551
+                },
+                "from": {
+                    "file": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 3185,
+                        "endLine": 53,
+                        "endColumn": 12,
+                        "endOffset": 3551
                     }
                 }
             }

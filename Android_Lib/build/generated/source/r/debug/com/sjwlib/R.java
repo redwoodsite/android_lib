@@ -9,17 +9,213 @@ package com.sjwlib;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsDividerColor=0x7f010002;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsDividerPadding=0x7f010005;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsIndicatorColor=0x7f010000;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsIndicatorHeight=0x7f010003;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsScrollOffset=0x7f010007;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsShouldExpand=0x7f010009;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int pstsTabBackground=0x7f010008;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsTabPaddingLeftRight=0x7f010006;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsTextAllCaps=0x7f01000a;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsUnderlineColor=0x7f010001;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int pstsUnderlineHeight=0x7f010004;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int tbarActionSrc=0x7f010010;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int tbarActionText=0x7f01000f;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static int tbarLogoSrc=0x7f010011;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int tbarTitle=0x7f01000c;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static int tbarTitleBg=0x7f01000d;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static int tbarTitleClickable=0x7f01000e;
+        /** <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>logo</code></td><td>0</td><td></td></tr>
+<tr><td><code>one</code></td><td>1</td><td></td></tr>
+<tr><td><code>back</code></td><td>2</td><td></td></tr>
+<tr><td><code>actionIv</code></td><td>3</td><td></td></tr>
+<tr><td><code>actionTv</code></td><td>4</td><td></td></tr>
+</table>
+         */
+        public static int tbarType=0x7f01000b;
+    }
+    public static final class drawable {
+        public static int background_tab=0x7f020000;
+        public static int dot_focused=0x7f020001;
+        public static int dot_normal=0x7f020002;
+        public static int selector_corners_txt=0x7f020003;
+        public static int tbar_back=0x7f020004;
+        public static int tbar_clear=0x7f020005;
+        public static int tbar_fresh=0x7f020006;
+        public static int tbar_logo=0x7f020007;
+        public static int tbar_map=0x7f020008;
+        public static int tbar_sc_0=0x7f020009;
+        public static int tbar_sc_1=0x7f02000a;
     }
     public static final class id {
-        public static int lblInfo=0x7f060001;
-        public static int ll_body=0x7f060000;
+        public static int actionIv=0x7f070000;
+        public static int actionTv=0x7f070001;
+        public static int back=0x7f070002;
+        public static int datepicker=0x7f07000c;
+        public static int gvCity=0x7f070009;
+        public static int gvDistrict=0x7f07000a;
+        public static int gvProvince=0x7f070008;
+        public static int ivBack=0x7f070005;
+        public static int ivClear=0x7f070007;
+        public static int iv_action=0x7f070010;
+        public static int iv_back=0x7f07000f;
+        public static int iv_logo=0x7f070012;
+        public static int lblInfo=0x7f070014;
+        public static int lbl_item=0x7f07000b;
+        public static int ll_body=0x7f070013;
+        public static int logo=0x7f070003;
+        public static int one=0x7f070004;
+        public static int timepicker=0x7f07000d;
+        public static int tvArea=0x7f070006;
+        public static int tv_action=0x7f070011;
+        public static int tv_title=0x7f07000e;
     }
     public static final class layout {
-        public static int activity_workprogress=0x7f020000;
+        public static int activity_cityselect=0x7f030000;
+        public static int activity_cityselect_item=0x7f030001;
+        public static int activity_datepicker=0x7f030002;
+        public static int activity_datetimepicker=0x7f030003;
+        public static int activity_tbar_back=0x7f030004;
+        public static int activity_tbar_back_action_iv=0x7f030005;
+        public static int activity_tbar_back_action_tv=0x7f030006;
+        public static int activity_tbar_logo=0x7f030007;
+        public static int activity_tbar_one=0x7f030008;
+        public static int activity_workprogress=0x7f030009;
     }
     public static final class string {
-        public static int app_name=0x7f040000;
-        public static int test_name=0x7f040001;
+        public static int app_name=0x7f050000;
+        public static int test_name=0x7f050001;
     }
     public static final class style {
         /** 
@@ -28,12 +224,343 @@ public final class R {
             backward-compatibility can go here.
         
          */
-        public static int AppBaseTheme=0x7f050000;
+        public static int AppBaseTheme=0x7f060000;
         /**  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static int AppTheme=0x7f050001;
+        public static int AppTheme=0x7f060001;
+        public static int TbarIv=0x7f060002;
+        public static int TbarIv_Action=0x7f060003;
+        public static int TbarIv_Back=0x7f060004;
+        public static int TbarTvAction=0x7f060005;
+        public static int TbarTvTitle=0x7f060006;
     }
     public static final class xml {
-        public static int url=0x7f030000;
+        public static int url=0x7f040000;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a PagerSlidingTabStrip.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsDividerColor com.sjwlib:pstsDividerColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsDividerPadding com.sjwlib:pstsDividerPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsIndicatorColor com.sjwlib:pstsIndicatorColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsIndicatorHeight com.sjwlib:pstsIndicatorHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsScrollOffset com.sjwlib:pstsScrollOffset}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsShouldExpand com.sjwlib:pstsShouldExpand}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsTabBackground com.sjwlib:pstsTabBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsTabPaddingLeftRight com.sjwlib:pstsTabPaddingLeftRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsTextAllCaps com.sjwlib:pstsTextAllCaps}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsUnderlineColor com.sjwlib:pstsUnderlineColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsUnderlineHeight com.sjwlib:pstsUnderlineHeight}</code></td><td></td></tr>
+           </table>
+           @see #PagerSlidingTabStrip_pstsDividerColor
+           @see #PagerSlidingTabStrip_pstsDividerPadding
+           @see #PagerSlidingTabStrip_pstsIndicatorColor
+           @see #PagerSlidingTabStrip_pstsIndicatorHeight
+           @see #PagerSlidingTabStrip_pstsScrollOffset
+           @see #PagerSlidingTabStrip_pstsShouldExpand
+           @see #PagerSlidingTabStrip_pstsTabBackground
+           @see #PagerSlidingTabStrip_pstsTabPaddingLeftRight
+           @see #PagerSlidingTabStrip_pstsTextAllCaps
+           @see #PagerSlidingTabStrip_pstsUnderlineColor
+           @see #PagerSlidingTabStrip_pstsUnderlineHeight
+         */
+        public static final int[] PagerSlidingTabStrip = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008, 0x7f010009, 0x7f01000a
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsDividerColor}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsDividerColor
+        */
+        public static int PagerSlidingTabStrip_pstsDividerColor = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsDividerPadding}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsDividerPadding
+        */
+        public static int PagerSlidingTabStrip_pstsDividerPadding = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsIndicatorColor}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsIndicatorColor
+        */
+        public static int PagerSlidingTabStrip_pstsIndicatorColor = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsIndicatorHeight}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsIndicatorHeight
+        */
+        public static int PagerSlidingTabStrip_pstsIndicatorHeight = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsScrollOffset}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsScrollOffset
+        */
+        public static int PagerSlidingTabStrip_pstsScrollOffset = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsShouldExpand}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsShouldExpand
+        */
+        public static int PagerSlidingTabStrip_pstsShouldExpand = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsTabBackground}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.sjwlib:pstsTabBackground
+        */
+        public static int PagerSlidingTabStrip_pstsTabBackground = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsTabPaddingLeftRight}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsTabPaddingLeftRight
+        */
+        public static int PagerSlidingTabStrip_pstsTabPaddingLeftRight = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsTextAllCaps}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsTextAllCaps
+        */
+        public static int PagerSlidingTabStrip_pstsTextAllCaps = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsUnderlineColor}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsUnderlineColor
+        */
+        public static int PagerSlidingTabStrip_pstsUnderlineColor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#pstsUnderlineHeight}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:pstsUnderlineHeight
+        */
+        public static int PagerSlidingTabStrip_pstsUnderlineHeight = 4;
+        /** Attributes that can be used with a Tbar.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #Tbar_tbarActionSrc com.sjwlib:tbarActionSrc}</code></td><td></td></tr>
+           <tr><td><code>{@link #Tbar_tbarActionText com.sjwlib:tbarActionText}</code></td><td></td></tr>
+           <tr><td><code>{@link #Tbar_tbarLogoSrc com.sjwlib:tbarLogoSrc}</code></td><td></td></tr>
+           <tr><td><code>{@link #Tbar_tbarTitle com.sjwlib:tbarTitle}</code></td><td></td></tr>
+           <tr><td><code>{@link #Tbar_tbarTitleBg com.sjwlib:tbarTitleBg}</code></td><td></td></tr>
+           <tr><td><code>{@link #Tbar_tbarTitleClickable com.sjwlib:tbarTitleClickable}</code></td><td></td></tr>
+           <tr><td><code>{@link #Tbar_tbarType com.sjwlib:tbarType}</code></td><td></td></tr>
+           </table>
+           @see #Tbar_tbarActionSrc
+           @see #Tbar_tbarActionText
+           @see #Tbar_tbarLogoSrc
+           @see #Tbar_tbarTitle
+           @see #Tbar_tbarTitleBg
+           @see #Tbar_tbarTitleClickable
+           @see #Tbar_tbarType
+         */
+        public static final int[] Tbar = {
+            0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e,
+            0x7f01000f, 0x7f010010, 0x7f010011
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#tbarActionSrc}
+          attribute's value can be found in the {@link #Tbar} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.sjwlib:tbarActionSrc
+        */
+        public static int Tbar_tbarActionSrc = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#tbarActionText}
+          attribute's value can be found in the {@link #Tbar} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:tbarActionText
+        */
+        public static int Tbar_tbarActionText = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#tbarLogoSrc}
+          attribute's value can be found in the {@link #Tbar} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.sjwlib:tbarLogoSrc
+        */
+        public static int Tbar_tbarLogoSrc = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#tbarTitle}
+          attribute's value can be found in the {@link #Tbar} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:tbarTitle
+        */
+        public static int Tbar_tbarTitle = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#tbarTitleBg}
+          attribute's value can be found in the {@link #Tbar} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.sjwlib:tbarTitleBg
+        */
+        public static int Tbar_tbarTitleBg = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#tbarTitleClickable}
+          attribute's value can be found in the {@link #Tbar} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.sjwlib:tbarTitleClickable
+        */
+        public static int Tbar_tbarTitleClickable = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.sjwlib.R.attr#tbarType}
+          attribute's value can be found in the {@link #Tbar} array.
+
+
+          <p>May be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+<p>May be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>logo</code></td><td>0</td><td></td></tr>
+<tr><td><code>one</code></td><td>1</td><td></td></tr>
+<tr><td><code>back</code></td><td>2</td><td></td></tr>
+<tr><td><code>actionIv</code></td><td>3</td><td></td></tr>
+<tr><td><code>actionTv</code></td><td>4</td><td></td></tr>
+</table>
+          @attr name com.sjwlib:tbarType
+        */
+        public static int Tbar_tbarType = 0;
+    };
 }

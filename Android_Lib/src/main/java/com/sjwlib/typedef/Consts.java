@@ -4,7 +4,6 @@ package com.sjwlib.typedef;
  * Created by Administrator on 2016/10/20.
  */
 public class Consts {
-
     /*请求码定义----------------------------------------------------------------------------------*/
     public static final int REQUEST_CODE_101 = 101;
     public static final int REQUEST_CODE_102 = 102;

@@ -1,6 +1,42 @@
 [
     {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_cityselect.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_cityselect.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_back.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_back.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_cityselect_item.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_cityselect_item.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_back_action_tv.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_back_action_tv.xml"
+    },
+    {
         "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_workprogress.xml",
         "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_workprogress.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_datepicker.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_datepicker.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_logo.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_logo.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_back_action_iv.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_back_action_iv.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_one.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_one.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_datetimepicker.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_datetimepicker.xml"
     }
 ]

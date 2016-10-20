@@ -7,22 +7,110 @@
 package com.sjwlib;
 
 public final class R {
+	public static final class attr {
+		public static final int pstsDividerColor = 0x7f010002;
+		public static final int pstsDividerPadding = 0x7f010005;
+		public static final int pstsIndicatorColor = 0x7f010000;
+		public static final int pstsIndicatorHeight = 0x7f010003;
+		public static final int pstsScrollOffset = 0x7f010007;
+		public static final int pstsShouldExpand = 0x7f010009;
+		public static final int pstsTabBackground = 0x7f010008;
+		public static final int pstsTabPaddingLeftRight = 0x7f010006;
+		public static final int pstsTextAllCaps = 0x7f01000a;
+		public static final int pstsUnderlineColor = 0x7f010001;
+		public static final int pstsUnderlineHeight = 0x7f010004;
+		public static final int tbarActionSrc = 0x7f010010;
+		public static final int tbarActionText = 0x7f01000f;
+		public static final int tbarLogoSrc = 0x7f010011;
+		public static final int tbarTitle = 0x7f01000c;
+		public static final int tbarTitleBg = 0x7f01000d;
+		public static final int tbarTitleClickable = 0x7f01000e;
+		public static final int tbarType = 0x7f01000b;
+	}
+	public static final class drawable {
+		public static final int background_tab = 0x7f020000;
+		public static final int dot_focused = 0x7f020001;
+		public static final int dot_normal = 0x7f020002;
+		public static final int selector_corners_txt = 0x7f020003;
+		public static final int tbar_back = 0x7f020004;
+		public static final int tbar_clear = 0x7f020005;
+		public static final int tbar_fresh = 0x7f020006;
+		public static final int tbar_logo = 0x7f020007;
+		public static final int tbar_map = 0x7f020008;
+		public static final int tbar_sc_0 = 0x7f020009;
+		public static final int tbar_sc_1 = 0x7f02000a;
+	}
 	public static final class id {
-		public static final int lblInfo = 0x7f060001;
-		public static final int ll_body = 0x7f060000;
+		public static final int actionIv = 0x7f070000;
+		public static final int actionTv = 0x7f070001;
+		public static final int back = 0x7f070002;
+		public static final int datepicker = 0x7f07000c;
+		public static final int gvCity = 0x7f070009;
+		public static final int gvDistrict = 0x7f07000a;
+		public static final int gvProvince = 0x7f070008;
+		public static final int ivBack = 0x7f070005;
+		public static final int ivClear = 0x7f070007;
+		public static final int iv_action = 0x7f070010;
+		public static final int iv_back = 0x7f07000f;
+		public static final int iv_logo = 0x7f070012;
+		public static final int lblInfo = 0x7f070014;
+		public static final int lbl_item = 0x7f07000b;
+		public static final int ll_body = 0x7f070013;
+		public static final int logo = 0x7f070003;
+		public static final int one = 0x7f070004;
+		public static final int timepicker = 0x7f07000d;
+		public static final int tvArea = 0x7f070006;
+		public static final int tv_action = 0x7f070011;
+		public static final int tv_title = 0x7f07000e;
 	}
 	public static final class layout {
-		public static final int activity_workprogress = 0x7f020000;
+		public static final int activity_cityselect = 0x7f030000;
+		public static final int activity_cityselect_item = 0x7f030001;
+		public static final int activity_datepicker = 0x7f030002;
+		public static final int activity_datetimepicker = 0x7f030003;
+		public static final int activity_tbar_back = 0x7f030004;
+		public static final int activity_tbar_back_action_iv = 0x7f030005;
+		public static final int activity_tbar_back_action_tv = 0x7f030006;
+		public static final int activity_tbar_logo = 0x7f030007;
+		public static final int activity_tbar_one = 0x7f030008;
+		public static final int activity_workprogress = 0x7f030009;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f040000;
-		public static final int test_name = 0x7f040001;
+		public static final int app_name = 0x7f050000;
+		public static final int test_name = 0x7f050001;
 	}
 	public static final class style {
-		public static final int AppBaseTheme = 0x7f050000;
-		public static final int AppTheme = 0x7f050001;
+		public static final int AppBaseTheme = 0x7f060000;
+		public static final int AppTheme = 0x7f060001;
+		public static final int TbarIv = 0x7f060002;
+		public static final int TbarIv_Action = 0x7f060003;
+		public static final int TbarIv_Back = 0x7f060004;
+		public static final int TbarTvAction = 0x7f060005;
+		public static final int TbarTvTitle = 0x7f060006;
+	}
+	public static final class styleable {
+		public static final int[] PagerSlidingTabStrip = { 0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007, 0x7f010008, 0x7f010009, 0x7f01000a };
+		public static final int PagerSlidingTabStrip_pstsDividerColor = 2;
+		public static final int PagerSlidingTabStrip_pstsDividerPadding = 5;
+		public static final int PagerSlidingTabStrip_pstsIndicatorColor = 0;
+		public static final int PagerSlidingTabStrip_pstsIndicatorHeight = 3;
+		public static final int PagerSlidingTabStrip_pstsScrollOffset = 7;
+		public static final int PagerSlidingTabStrip_pstsShouldExpand = 9;
+		public static final int PagerSlidingTabStrip_pstsTabBackground = 8;
+		public static final int PagerSlidingTabStrip_pstsTabPaddingLeftRight = 6;
+		public static final int PagerSlidingTabStrip_pstsTextAllCaps = 10;
+		public static final int PagerSlidingTabStrip_pstsUnderlineColor = 1;
+		public static final int PagerSlidingTabStrip_pstsUnderlineHeight = 4;
+		public static final int[] Tbar = { 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f01000f, 0x7f010010, 0x7f010011 };
+		public static final int Tbar_tbarActionSrc = 5;
+		public static final int Tbar_tbarActionText = 4;
+		public static final int Tbar_tbarLogoSrc = 6;
+		public static final int Tbar_tbarTitle = 1;
+		public static final int Tbar_tbarTitleBg = 2;
+		public static final int Tbar_tbarTitleClickable = 3;
+		public static final int Tbar_tbarType = 0;
 	}
 	public static final class xml {
-		public static final int url = 0x7f030000;
+		public static final int url = 0x7f040000;
 	}
 }

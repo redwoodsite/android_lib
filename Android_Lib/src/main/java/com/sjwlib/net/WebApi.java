@@ -6,12 +6,12 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+//import com.android.volley.Request;
+//import com.android.volley.RequestQueue;
+//import com.android.volley.Response;
+//import com.android.volley.VolleyError;
+//import com.android.volley.toolbox.StringRequest;
+//import com.android.volley.toolbox.Volley;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -123,59 +123,59 @@ public class WebApi {
         }
     }
 
-    public void invokeVolley(final Context context,
-                            final URLData urlData,
-                            final Map<String, String> params,
-                            final RequestCallbackBase callbackBase) {
-
-        final ApiRequestParams apiRequestParams = getApiRequestParams(context, urlData, callbackBase);
-        if (apiRequestParams.isParamsOk()) {
-            String url = apiRequestParams.getUrl();
-            String netType = apiRequestParams.getNetType();
-            final StringCallback callback = apiRequestParams.getResultCallback();
-
-            // 加入？参数
-            String strParams = "";
-            Set<Map.Entry<String, String>> sets = params.entrySet();
-            for (Map.Entry<String, String> entry : sets) {
-                if (strParams.equals(""))
-                    strParams = URLEncoder.encode(entry.getKey()) + "=" + URLEncoder.encode(entry.getValue());
-                else
-                    strParams += "&" + URLEncoder.encode(entry.getKey()) + "=" + URLEncoder.encode(entry.getValue());
-            }
-            if (!strParams.equals(""))
-                url += "?" + strParams;
-
-            // 执行get请求
-            final StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String result) {
-                    apiRequestParams.getResultCallback().onResponse(result);
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError volleyError) {
-                    String error = volleyError.getMessage();
-                    if (error == null) error = "未知异常!";
-                    apiRequestParams.getResultCallback().onError(null, new Exception(error));
-                }
-            });
-            stringRequest.setTag("sjwapi");
-            RequestQueue requestQueue = Volley.newRequestQueue(context);
-            requestCall.writeTimeOut(timeout);
-            try {
-                //requestQueue.cancelAll("sjwapi");
-                requestQueue.add(stringRequest);
-                //勿加此句，requestQueue.add函数中会自动调用start() arequestQueue.start();
-            } catch (Exception ex) {
-                String error = "执行Api出现异常:" + ex.getMessage();
-                if (callbackBase.isShowProgress()) {
-                    Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
-                }
-                callbackBase.onError(error);
-            }
-        }
-    }
+//    public void invokeVolley(final Context context,
+//                            final URLData urlData,
+//                            final Map<String, String> params,
+//                            final RequestCallbackBase callbackBase) {
+//
+//        final ApiRequestParams apiRequestParams = getApiRequestParams(context, urlData, callbackBase);
+//        if (apiRequestParams.isParamsOk()) {
+//            String url = apiRequestParams.getUrl();
+//            String netType = apiRequestParams.getNetType();
+//            final StringCallback callback = apiRequestParams.getResultCallback();
+//
+//            // 加入？参数
+//            String strParams = "";
+//            Set<Map.Entry<String, String>> sets = params.entrySet();
+//            for (Map.Entry<String, String> entry : sets) {
+//                if (strParams.equals(""))
+//                    strParams = URLEncoder.encode(entry.getKey()) + "=" + URLEncoder.encode(entry.getValue());
+//                else
+//                    strParams += "&" + URLEncoder.encode(entry.getKey()) + "=" + URLEncoder.encode(entry.getValue());
+//            }
+//            if (!strParams.equals(""))
+//                url += "?" + strParams;
+//
+//            // 执行get请求
+//            final StringRequest stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+//                @Override
+//                public void onResponse(String result) {
+//                    apiRequestParams.getResultCallback().onResponse(result);
+//                }
+//            }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError volleyError) {
+//                    String error = volleyError.getMessage();
+//                    if (error == null) error = "未知异常!";
+//                    apiRequestParams.getResultCallback().onError(null, new Exception(error));
+//                }
+//            });
+//            stringRequest.setTag("sjwapi");
+//            RequestQueue requestQueue = Volley.newRequestQueue(context);
+//            requestCall.writeTimeOut(timeout);
+//            try {
+//                //requestQueue.cancelAll("sjwapi");
+//                requestQueue.add(stringRequest);
+//                //勿加此句，requestQueue.add函数中会自动调用start() arequestQueue.start();
+//            } catch (Exception ex) {
+//                String error = "执行Api出现异常:" + ex.getMessage();
+//                if (callbackBase.isShowProgress()) {
+//                    Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+//                }
+//                callbackBase.onError(error);
+//            }
+//        }
+//    }
 
     public void invokeAsyncHttp(final Context context, URLData urlData, Map<String, String> params, final RequestCallbackBase callbackBase) {
         final ApiRequestParams apiRequestParams = getApiRequestParams(context, urlData, callbackBase);
