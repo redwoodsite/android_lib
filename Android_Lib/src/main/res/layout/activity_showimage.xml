@@ -8,9 +8,9 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:background="@color/black"
-    tools:context="com.widget.touchimageview.ShowImageActivity">
+    tools:context="com.sjwlib.widget.touchimageview.ShowImageActivity">
 
-    <com.widget.touchimageview.TouchImageView
+    <com.sjwlib.widget.touchimageview.TouchImageView
         android:id="@+id/image1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -6,9 +6,9 @@
         android:supportsRtl="true"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.widget.cityselect.CitySelectActivity" />
-        <activity android:name="com.widget.touchimageview.ShowImageActivity" />
-        <activity android:name="com.widget.imageupload.ImageuploadActivity"/>
+        <activity android:name="com.sjwlib.widget.cityselect.CitySelectActivity" />
+        <activity android:name="com.sjwlib.widget.touchimageview.ShowImageActivity" />
+        <activity android:name="com.sjwlib.widget.imageupload.ImageuploadActivity"/>
     </application>
 
 </manifest>
