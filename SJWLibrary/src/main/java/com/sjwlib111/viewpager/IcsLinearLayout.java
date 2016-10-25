@@ -1,4 +1,4 @@
-package com.sjwlib111.image.viewpager;
+package com.sjwlib111.viewpager;
 
 import android.content.Context;
 import android.content.res.TypedArray;

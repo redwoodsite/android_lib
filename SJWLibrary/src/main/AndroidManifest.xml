@@ -14,16 +14,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
-        <activity android:name="com.sjwlib111.image.imageloader.image.ImagePagerActivity" />
-        <activity
-            android:name="com.sjwlib111.selectpicture.select_picture_activity"
-            android:theme="@style/MyDialogStyleBottom" />
-
-        <!--<activity-->
-            <!--android:name=".ci"-->
-            <!--android:label="SelectCityActivity" >-->
-        <!--</activity>-->
-        <activity android:name="com.sjwlib111.image.touchimageview.Show_Picture_Activity">
+        <activity android:name=".touchimageview.Show_Picture_Activity">
         </activity>
 
     </application>

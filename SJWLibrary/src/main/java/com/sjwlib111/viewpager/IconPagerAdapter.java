@@ -1,4 +1,4 @@
-package com.sjwlib111.image.viewpager;
+package com.sjwlib111.viewpager;
 
 public interface IconPagerAdapter {
     /**

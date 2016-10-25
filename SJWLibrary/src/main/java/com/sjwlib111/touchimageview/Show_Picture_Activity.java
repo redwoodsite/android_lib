@@ -1,7 +1,6 @@
-package com.sjwlib111.image.touchimageview;
+package com.sjwlib111.touchimageview;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 

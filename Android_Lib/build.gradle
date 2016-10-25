@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion '21.1.2'
+    compileSdkVersion 14
+    buildToolsVersion '21.0.2'
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 14
@@ -27,11 +27,16 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+    // 引入aar库
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'],  dir: 'libs')
-    compile 'com.android.support:support-v4:19.0.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     //compile files('libs/fastjson-1.2.3.jar')
     //compile 'com.alibaba:fastjson:1.2.19'
     compile 'com.alibaba:fastjson:1.2.3'
@@ -46,5 +51,7 @@ dependencies {
     compile 'com.loopj.android:android-async-http:1.4.7'
     compile 'com.lzy.net:okgo:2.0.0'
     compile 'org.greenrobot:eventbus:3.0.0'
+    //    compile(name: 'PullToFresh_Lib-release', ext: 'aar')
+    compile 'com.android.support:support-v4:24.2.1'
 }
 

@@ -30,8 +30,6 @@ import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 import com.zhy.http.okhttp.request.RequestCall;
 
-import org.apache.http.Header;
-
 import java.lang.reflect.ParameterizedType;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -177,53 +175,53 @@ public class WebApi {
 //        }
 //    }
 
-    public void invokeAsyncHttp(final Context context, URLData urlData, Map<String, String> params, final RequestCallbackBase callbackBase) {
-        final ApiRequestParams apiRequestParams = getApiRequestParams(context, urlData, callbackBase);
-        if (apiRequestParams.isParamsOk()) {
-            String url = apiRequestParams.getUrl();
-            String netType = apiRequestParams.getNetType();
-            try {
-                if (params == null) {
-                    params = new HashMap();
-                }
-                AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
-                asyncHttpClient.setTimeout(timeout);
-                if (netType.equals("get")) {
-                    asyncHttpClient.get(url, new RequestParams(params), new AsyncHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int code, Header[] headers, byte[] bytes) {
-                            String result = new String(bytes);
-                            apiRequestParams.getResultCallback().onResponse(result);
-                        }
-                        @Override
-                        public void onFailure(int code, Header[] headers, byte[] bytes, Throwable throwable) {
-                            apiRequestParams.getResultCallback().onError(null, new Exception(throwable.getMessage()));
-                        }
-                    });
-                }
-                if (netType.equals("post")) {
-                    asyncHttpClient.post(url, new RequestParams(params), new AsyncHttpResponseHandler() {
-                        @Override
-                        public void onSuccess(int code, Header[] headers, byte[] bytes) {
-                            String result = new String(bytes);
-                            apiRequestParams.getResultCallback().onResponse(result);
-                        }
-
-                        @Override
-                        public void onFailure(int code, Header[] headers, byte[] bytes, Throwable throwable) {
-                            apiRequestParams.getResultCallback().onError(null, new Exception(throwable.getMessage()));
-                        }
-                    });
-                }
-            } catch (Exception var12) {
-                String error = "执行Api出现异常:" + var12.getMessage();
-                if (callbackBase.isShowProgress()) {
-                    Toast.makeText(context, error, Toast.LENGTH_SHORT);
-                }
-                callbackBase.onError(error);
-            }
-        }
-    }
+//    public void invokeAsyncHttp(final Context context, URLData urlData, Map<String, String> params, final RequestCallbackBase callbackBase) {
+//        final ApiRequestParams apiRequestParams = getApiRequestParams(context, urlData, callbackBase);
+//        if (apiRequestParams.isParamsOk()) {
+//            String url = apiRequestParams.getUrl();
+//            String netType = apiRequestParams.getNetType();
+//            try {
+//                if (params == null) {
+//                    params = new HashMap();
+//                }
+//                AsyncHttpClient asyncHttpClient = new AsyncHttpClient();
+//                asyncHttpClient.setTimeout(timeout);
+//                if (netType.equals("get")) {
+//                    asyncHttpClient.get(url, new RequestParams(params), new AsyncHttpResponseHandler() {
+//                        @Override
+//                        public void onSuccess(int code, Header[] headers, byte[] bytes) {
+//                            String result = new String(bytes);
+//                            apiRequestParams.getResultCallback().onResponse(result);
+//                        }
+//                        @Override
+//                        public void onFailure(int code, Header[] headers, byte[] bytes, Throwable throwable) {
+//                            apiRequestParams.getResultCallback().onError(null, new Exception(throwable.getMessage()));
+//                        }
+//                    });
+//                }
+//                if (netType.equals("post")) {
+//                    asyncHttpClient.post(url, new RequestParams(params), new AsyncHttpResponseHandler() {
+//                        @Override
+//                        public void onSuccess(int code, Header[] headers, byte[] bytes) {
+//                            String result = new String(bytes);
+//                            apiRequestParams.getResultCallback().onResponse(result);
+//                        }
+//
+//                        @Override
+//                        public void onFailure(int code, Header[] headers, byte[] bytes, Throwable throwable) {
+//                            apiRequestParams.getResultCallback().onError(null, new Exception(throwable.getMessage()));
+//                        }
+//                    });
+//                }
+//            } catch (Exception var12) {
+//                String error = "执行Api出现异常:" + var12.getMessage();
+//                if (callbackBase.isShowProgress()) {
+//                    Toast.makeText(context, error, Toast.LENGTH_SHORT);
+//                }
+//                callbackBase.onError(error);
+//            }
+//        }
+//    }
 
     /*
     得到回调和URL参数
