@@ -4,8 +4,8 @@ android {
     compileSdkVersion 24
     buildToolsVersion '24.0.0'
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 17
+        minSdkVersion 14
+        targetSdkVersion 21
         versionCode = 101
         versionName '1.0.1'
         // .so库64位编译32位
