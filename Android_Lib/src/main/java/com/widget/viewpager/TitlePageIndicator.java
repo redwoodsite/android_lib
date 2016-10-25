@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.sjwlib111.viewpager;
+package com.widget.viewpager;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -36,7 +36,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
 
-import com.sjwlib111.R;
+import com.sjwlib.R;
 
 import java.util.ArrayList;
 

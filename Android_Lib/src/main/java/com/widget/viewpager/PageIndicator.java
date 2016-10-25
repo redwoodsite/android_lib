@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.sjwlib111.viewpager;
+package com.widget.viewpager;
 
 import android.support.v4.view.ViewPager;
 
