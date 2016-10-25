@@ -1,4 +1,4 @@
-package com.sjwlib111.viewpager;
+package com.widget.viewpager;
 
 import android.content.Context;
 import android.content.res.TypedArray;
