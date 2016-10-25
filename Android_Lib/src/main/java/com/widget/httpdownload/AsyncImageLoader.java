@@ -1,4 +1,4 @@
-package com.sjwlib.db.httpdownload;
+package com.widget.httpdownload;
 
 import android.content.Context;
 import android.graphics.Bitmap;

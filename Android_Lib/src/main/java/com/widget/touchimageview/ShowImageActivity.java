@@ -8,26 +8,11 @@ import com.sjwlib.R;
 
 import java.io.File;
 
-/*  调用
-
-    @OnClick(R.id.img_tx) void tx_click(){
-        if(img_tx.getDrawable() != null){
-            Bitmap bitmap = ((BitmapDrawable)img_tx.getDrawable()).getBitmap();
-            Intent intent = new Intent(this, Show_Picture_Activity.class);
-            Bundle bundle = new Bundle();
-            bundle.putParcelable("bitmap", bitmap);
-            intent.putExtras(bundle);
-            startActivity(intent);
-        }
-    }
-
-*/
-
-public class Show_Picture_Activity extends Activity {
+public class ShowImageActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_picture);
+        setContentView(R.layout.activity_showimage);
 
         // 加载指定本地图片
         TouchImageView image1 = (TouchImageView)findViewById(R.id.image1);

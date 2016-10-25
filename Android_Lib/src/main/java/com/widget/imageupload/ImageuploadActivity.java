@@ -1,4 +1,4 @@
-package com.sjwlib.db.imageupload;
+package com.widget.imageupload;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -29,11 +30,21 @@ public class ImageuploadActivity extends Activity {
 
     public final static int RESULT_CODE_IMAGEUPLOAD = 1111;
 
-    LinearLayout llContainer ;
+    //LinearLayout llContainer ;
     ProgressBar pbProgressBar;
-    TextView tvCurrentSize;
-    TextView tvTotalSize;
-    TextView tvTitle;
+    //TextView tvCurrentSize;
+    //TextView tvTotalSize;
+    TextView tvInfo;
+    /*
+        客户端向intent传入如下参数
+            url(*):      上传网址
+            filepath(*)：本地图片路径
+            headers：    头参数
+            params：     表单参数
+            token：      令牌，用于校验身份
+            cache：     鲁班压缩后存放的路径，位于app.cache目录下
+            title:      上传的图片标题
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,20 +65,20 @@ public class ImageuploadActivity extends Activity {
 
     private void initViews() {
         getWindow().setGravity(Gravity.CENTER);
-        android.view.WindowManager.LayoutParams p = getWindow().getAttributes();
+        WindowManager.LayoutParams p = getWindow().getAttributes();
         p.width = ActionBar.LayoutParams.MATCH_PARENT;
         getWindow().setAttributes(p);
 
-        LinearLayout llContainer = (LinearLayout)findViewById(R.id.llContainer);
-        ProgressBar pbProgressbar = (ProgressBar)findViewById(R.id.pbProgress);
-        TextView tvCurrentSize = (TextView)findViewById(R.id.tvCurrentSize);
-        TextView tvTotalSize = (TextView)findViewById(R.id.tvTotalSize);
-        TextView tvTitle = (TextView)findViewById(R.id.tvTitle);
+        //llContainer = (LinearLayout)findViewById(R.id.llContainer);
+        pbProgressBar = (ProgressBar)findViewById(R.id.pbProgressBar);
+        //tvCurrentSize = (TextView)findViewById(R.id.tvCurrentSize);
+        //tvTotalSize = (TextView)findViewById(R.id.tvTotalSize);
+        tvInfo = (TextView)findViewById(R.id.tvTitle);
 
         pbProgressBar.setProgress(0);
         pbProgressBar.setMax(0);
-        tvCurrentSize.setText("");
-        tvTotalSize.setText("");
+        //tvCurrentSize.setText("");
+        //tvTotalSize.setText("");
     }
 
     //extras: p1 heads p2 params p3 url（requried） p4 filename(requried)
@@ -96,9 +107,9 @@ public class ImageuploadActivity extends Activity {
                     public void onBefore(BaseRequest request) {
                         super.onBefore(request);
                         if(getIntent().hasExtra("title"))
-                            tvTitle.setText("正在上传文件:" + getIntent().getStringExtra("title"));
+                            tvInfo.setText("正在上传文件:" + getIntent().getStringExtra("title"));
                         else
-                            tvTitle.setText("正在上传文件");
+                            tvInfo.setText("正在上传文件");
                         //llContainer.setVisibility(View.VISIBLE);
                     }
 
@@ -115,8 +126,8 @@ public class ImageuploadActivity extends Activity {
                     @Override
                     public void upProgress(long currentSize, long totalSize, float progress, long networkSpeed) {
                         super.upProgress(currentSize, totalSize, progress, networkSpeed);
-                        tvCurrentSize.setText(ImageUtils.convertFileSize(currentSize));
-                        tvTotalSize.setText(ImageUtils.convertFileSize(totalSize));
+                        //tvCurrentSize.setText(ImageUtils.convertFileSize(currentSize));
+                        //tvTotalSize.setText(ImageUtils.convertFileSize(totalSize));
                         pbProgressBar.setProgress((int)currentSize*100);
                         pbProgressBar.setMax(100);
                     }
@@ -131,17 +142,16 @@ public class ImageuploadActivity extends Activity {
 
     // 对原图使用鲁班压缩，存储于指定路径下
     private void lubanCompress(File oldFile){
-        String userid = "";
-        if(getIntent().hasExtra("userid")) userid = getIntent().getStringExtra("userid");
-        Luban.DEFAULT_DISK_CACHE_DIR = userid;
+        if(getIntent().hasExtra("cache"))
+            Luban.DEFAULT_DISK_CACHE_DIR = getIntent().getStringExtra("cache");
         Luban.get(this)
                 .load(oldFile)                     //传人要压缩的图片
                 .putGear(Luban.THIRD_GEAR)      //设定压缩档次，默认三挡
                 .setCompressListener(new OnCompressListener() { //设置回调
                     @Override
                     public void onStart() {
-                        tvTitle.setText("开始压缩图片");
-                        llContainer.setVisibility(View.GONE);
+                        tvInfo.setText("开始压缩图片");
+                        //llContainer.setVisibility(View.GONE);
                     }
                     @Override
                     public void onSuccess(File newFile) {

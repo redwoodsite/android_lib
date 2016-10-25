@@ -8,7 +8,7 @@
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
     android:background="@color/black"
-    tools:context="com.widget.touchimageview.Show_Picture_Activity">
+    tools:context="com.widget.touchimageview.ShowImageActivity">
 
     <com.widget.touchimageview.TouchImageView
         android:id="@+id/image1"

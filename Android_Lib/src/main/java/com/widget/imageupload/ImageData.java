@@ -1,4 +1,4 @@
-package com.sjwlib.db.imageupload;
+package com.widget.imageupload;
 
 import android.widget.ImageView;
 

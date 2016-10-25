@@ -1,4 +1,4 @@
-package com.sjwlib.db.imageupload;
+package com.widget.imageupload;
 
 /**
  * Created by Administrator on 2016/10/17.
