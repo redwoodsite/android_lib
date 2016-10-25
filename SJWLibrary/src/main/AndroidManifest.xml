@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
-        <activity android:name=".touchimageview.Show_Picture_Activity">
+        <activity android:name="com.widget.touchimageview.Show_Picture_Activity">
         </activity>
 
     </application>

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="Tbar">
-        <attr name="tbarType" format="integer">
+    <declare-styleable name="Titlebar">
+        <attr name="titleType" format="integer">
             <enum name="logo" value="0" />
             <enum name="one" value="1" />
             <enum name="back" value="2" />
             <enum name="actionIv" value="3" />
             <enum name="actionTv" value="4" />
         </attr>
-        <attr name="tbarTitle" format="string" />
-        <attr name="tbarTitleBg" format="color|reference" />
-        <attr name="tbarTitleClickable" format="boolean" />
-        <attr name="tbarActionText" format="string" />
-        <attr name="tbarActionSrc" format="reference" />
-        <attr name="tbarLogoSrc" format="reference" />
+        <attr name="titleText" format="string" />
+        <attr name="titleBackground" format="color|reference" />
+        <attr name="titleClickable" format="boolean" />
+        <attr name="titleActionText" format="string" />
+        <attr name="titleActionSrc" format="reference" />
+        <attr name="titleLogoSrc" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="PagerSlidingTabStrip">
