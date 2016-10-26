@@ -1,4 +1,4 @@
-package com.sjwlib.core.typedef;
+package com.sjwlib.widget.versionupgrade;
 
 /**
  * Created by yangzhixi on 2016/4/18.

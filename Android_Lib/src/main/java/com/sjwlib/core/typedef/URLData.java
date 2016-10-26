@@ -6,31 +6,12 @@ public class URLData {
 	private String netType;
 	private String url;
 
-	private String parentKey = "";
-	private String subKey = "";
-
 	public URLData(){
 
 	}
 	public URLData(String key,String netType){
 		this.key = key;
 		this.netType = netType;
-	}
-
-	public String getParentKey() {
-		return parentKey;
-	}
-
-	public void setParentKey(String parentKey) {
-		this.parentKey = parentKey;
-	}
-
-	public String getSubKey() {
-		return subKey;
-	}
-
-	public void setSubKey(String subKey) {
-		this.subKey = subKey;
 	}
 
 	public String getKey() {
