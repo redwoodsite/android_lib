@@ -58,7 +58,6 @@ public class ImageuploadActivity extends Activity {
         }
         File oldFile = new File(getIntent().getStringExtra("filepath"));
         lubanCompress(oldFile);
-        startUpload(oldFile);
     }
 
     private void initViews() {

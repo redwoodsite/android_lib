@@ -1,42 +1,230 @@
 [
     {
-        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_cityselect.xml",
-        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_cityselect.xml"
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_back.xml",
-        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_back.xml"
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
         "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_cityselect_item.xml",
         "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_cityselect_item.xml"
     },
     {
-        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_back_action_tv.xml",
-        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_back_action_tv.xml"
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_lines.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_lines.xml"
     },
     {
-        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_workprogress.xml",
-        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_workprogress.xml"
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\select_dialog_multichoice_material.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_search_view.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_image_preview.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.lzy.widget\\imagepicker\\0.3.2\\res\\layout\\activity_image_preview.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_media_action.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_media_action.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_image_crop.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.lzy.widget\\imagepicker\\0.3.2\\res\\layout\\activity_image_crop.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_title_logo.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_title_logo.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pop_folder.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.lzy.widget\\imagepicker\\0.3.2\\res\\layout\\pop_folder.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_datetimepicker.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_datetimepicker.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_media.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_cityselect.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_cityselect.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_media_cancel_action.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_imageupload.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_imageupload.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_showimage.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_showimage.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\adapter_folder_list_item.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.lzy.widget\\imagepicker\\0.3.2\\res\\layout\\adapter_folder_list_item.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_title_back_action_tv.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_title_back_action_tv.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_simple.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_simple.xml"
     },
     {
         "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_datepicker.xml",
         "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_datepicker.xml"
     },
     {
-        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_logo.xml",
-        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_logo.xml"
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
-        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_back_action_iv.xml",
-        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_back_action_iv.xml"
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_tbar_one.xml",
-        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_tbar_one.xml"
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_datetimepicker.xml",
-        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_datetimepicker.xml"
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_big_media_narrow.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_part_time.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\notification_template_big_media.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\adapter_image_list_item.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.lzy.widget\\imagepicker\\0.3.2\\res\\layout\\adapter_image_list_item.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_title_back.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_title_back.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_action_menu_item_layout.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_title_one.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_title_one.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_workprogress.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_workprogress.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_image_grid.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.lzy.widget\\imagepicker\\0.3.2\\res\\layout\\activity_image_grid.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\adapter_camera_item.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.lzy.widget\\imagepicker\\0.3.2\\res\\layout\\adapter_camera_item.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\include_top_bar.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.lzy.widget\\imagepicker\\0.3.2\\res\\layout\\include_top_bar.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "D:\\android_lib\\Android_Lib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\activity_title_back_action_iv.xml",
+        "source": "D:\\android_lib\\Android_Lib\\build\\intermediates\\bundles\\debug\\res\\layout\\activity_title_back_action_iv.xml"
     }
 ]
