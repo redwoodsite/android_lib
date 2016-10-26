@@ -1,4 +1,0 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-    <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar" />
-    <style name="AppTheme" parent="AppBaseTheme" />
-</resources>
