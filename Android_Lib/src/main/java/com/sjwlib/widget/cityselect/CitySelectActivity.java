@@ -97,15 +97,12 @@ public class CitySelectActivity extends Activity {
             }
         });
 
-        String jsonFile = "";
+        String jsonFile = "city.json";
         selType = getIntent().getStringExtra("seltype");
-        selType = selType == null ? "" : selType;
-        if (selType.equals("txdz")) {   // 提箱地点
-            jsonFile = "txdz.json";
-        } else {    // 省市区
-            jsonFile = "city.json";
+        if (selType != null && !"".equals(selType)) {
+            jsonFile = selType + ".json";
         }
-        String jsonStr = jsonFile.equals("") ? "" : CommUtil.getJson(getBaseContext(), jsonFile);
+        String jsonStr = CommUtil.getJson(getBaseContext(), jsonFile);
         JSONObject root = JSON.parseObject(jsonStr);
         array = root.getJSONArray("citylist");
         initListView_province();
