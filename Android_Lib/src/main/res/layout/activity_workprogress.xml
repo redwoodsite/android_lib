@@ -8,14 +8,14 @@
     android:layout_marginRight="25dp"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:background="#ffffff">
+    android:background="#00000000">
 
     <ProgressBar
         android:id="@android:id/progress"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:max="10000"
-        style="@android:style/Widget.Holo.ProgressBar.Small" />
+        style="@android:style/Widget.Holo.ProgressBar" />
 
     <TextView
         android:id="@+id/lblInfo"
