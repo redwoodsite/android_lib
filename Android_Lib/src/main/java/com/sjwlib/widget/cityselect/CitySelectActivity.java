@@ -101,6 +101,8 @@ public class CitySelectActivity extends Activity {
         selType = getIntent().getStringExtra("seltype");
         if (selType != null && !"".equals(selType)) {
             jsonFile = selType + ".json";
+        } else {
+            selType = "";
         }
         String jsonStr = CommUtil.getJson(getBaseContext(), jsonFile);
         JSONObject root = JSON.parseObject(jsonStr);
@@ -130,9 +132,7 @@ public class CitySelectActivity extends Activity {
     private void initListView_city(String iCode) {
         mAllCitys = getCity(iCode);
         if (mAllCitys.size() > 0) {
-            if (selType.equals("txdz")) {
-                //
-            } else {
+            if ("".equals(selType)) {
                 City city = new City();
                 city.setCityName("确定");
                 mAllCitys.add(0, city);
@@ -170,9 +170,7 @@ public class CitySelectActivity extends Activity {
     private void initListView_district(String sCode0, String sCode1) {
         mAllDistrict = getDistrict(sCode0, sCode1);
         if (mAllDistrict.size() > 0) {
-            if (selType.equals("txdz")) {
-                //
-            } else {
+            if ("".equals(selType)) {
                 mAllDistrict.add(0, "确定");
             }
             mDisctrictAdapter = new DiscAdapter(mAllDistrict, this);
