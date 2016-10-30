@@ -22,6 +22,15 @@ public class VersionBean {
     private String uploader = "";
     private String file = "";
     private String desc = "";
+    private String updateTime = "";
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
 
     public String getVer() {
         return ver;

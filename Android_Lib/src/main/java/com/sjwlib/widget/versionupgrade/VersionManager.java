@@ -62,7 +62,7 @@ public class VersionManager {
     }
 
     private static void showLogDialog(final VersionContext versionContext, final VersionBean versionBean, final VersionCallback versionCallback){
-        String strLog = "是否立即升级 %s -> %s？";
+        String strLog = "更新于"+versionBean.getUpdateTime()+"\n是否立即升级 %s -> %s？";
         if(versionBean.getShowlog() == 1)
             strLog = String.format( versionBean.getDesc() + "\n\n" + strLog,
                     versionContext.getVerName() + versionBean.getVertype(),
