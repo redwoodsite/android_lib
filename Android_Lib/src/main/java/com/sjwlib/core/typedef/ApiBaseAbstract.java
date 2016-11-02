@@ -10,11 +10,22 @@ import java.util.HashMap;
 public abstract class ApiBaseAbstract {
     private HashMap<String,URLData> urlHashMap = new HashMap<String, URLData>();
 
+    public ApiBaseAbstract(){
+        initUrlData();
+    }
+
     // 派生类重写 举例：http://123.57.24.26 或 123.57.24.26
     protected abstract String getApiAddress();
 
     // 派生类重写 举例：verwebapi
     protected abstract String getApiName();
+
+    // 派生类重写 举例：
+    protected abstract void initUrlData();
+
+    protected void setUrlData(String apiKey){
+        setUrlData(apiKey, "get");
+    }
 
     protected void setUrlData(String apiKey, String netType){
         if(!urlHashMap.containsKey(apiKey)){
