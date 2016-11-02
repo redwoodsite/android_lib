@@ -1,10 +1,10 @@
 package com.sjwlib.core.typedef;
 
 public class URLData {
+	private String address;
 	private String key;
-	private long expires;
 	private String netType;
-	private String url;
+	private long expires;
 
 	public URLData(){
 
@@ -12,6 +12,13 @@ public class URLData {
 	public URLData(String key,String netType){
 		this.key = key;
 		this.netType = netType;
+	}
+
+	public String getUrl() {
+		if(address.endsWith("/"))
+			return address + key;
+		else
+			return address + "/" + key;
 	}
 
 	public String getKey() {
@@ -38,11 +45,14 @@ public class URLData {
 		this.netType = netType;
 	}
 
-	public String getUrl() {
-		return url;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setAddress(String address) {
+		this.address = address;
 	}
+
+
+
 }
