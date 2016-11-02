@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\android_lib\Android_Lib\src\main\assets"><file name="city.json" path="D:\android_lib\Android_Lib\src\main\assets\city.json"/><file name="txdz.json" path="D:\android_lib\Android_Lib\src\main\assets\txdz.json"/></source><source path="D:\android_lib\Android_Lib\build\generated\assets\shaders\release"/></dataSet><dataSet config="release"><source path="D:\android_lib\Android_Lib\src\release\assets"/></dataSet></merger>
