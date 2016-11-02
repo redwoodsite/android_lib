@@ -4,15 +4,16 @@ import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends AppCompatActivity {
 	/**
 	 * 请求列表管理器
 	 */
 //	protected RequestManager requestManager = null;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 //		requestManager = new RequestManager(this);
 
 		super.onCreate(savedInstanceState);
@@ -22,11 +23,11 @@ public abstract class BaseActivity extends Activity {
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		}
 
-		initVariables();
+//		initVariables();
 		initViews(savedInstanceState);
 	}
 
-	protected abstract void initVariables();
+//	protected abstract void initVariables();
 
 	protected abstract void initViews(Bundle savedInstanceState);
 
