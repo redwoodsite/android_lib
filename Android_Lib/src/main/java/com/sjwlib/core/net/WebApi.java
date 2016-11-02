@@ -54,17 +54,6 @@ public class WebApi {
             "(\\d{4}[-/]\\d{1,2}[-/]\\d{1,2})T(\\d{1,2}:\\d{1,2}:\\d{1,2})(?:\\.\\d+)?"
     };
 
-    public String getAddress(Context context, String apiKey) {
-        final URLData urlData = UrlConfigManager.findAddress(context, apiKey);
-        if(urlData!=null){
-            String url = urlData.getUrl();
-            url = match(url, regexArray[0]);
-            return url;
-        }else{
-            return "";
-        }
-    }
-
     private WebApi() {
 
     }
