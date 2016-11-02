@@ -14,6 +14,12 @@ public class URLData {
 		this.netType = netType;
 	}
 
+	public URLData(String key,String netType, String address){
+		this.key = key;
+		this.netType = netType;
+		this.address = address;
+	}
+
 	public String getUrl() {
 		if(address.endsWith("/"))
 			return address + key;
